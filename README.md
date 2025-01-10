@@ -18,5 +18,22 @@ Make a clear list of features that work/dont work
 
 ## Adventurer Subclasses
 
-replace this with your documentation for your two Adventurer subclasses. If you modify or replace the provided CodeWarrior class, please provide documentation for that as well.
+Venusaur
+Attack - 
+Support -
+Support 2 -
+Special -
+
+Charizard
+Attack - 
+Support -
+Support 2 -
+Special -
+
+Blastoise
+Attack - 
+Support -
+Support 2 -
+Special -
+
 

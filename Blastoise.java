@@ -50,7 +50,7 @@ public class Blastoise extends Adventurer{
 	}
 
 	public String support() {
-    //
+    // protect
 		foe.setSleepStatus(true);
 		return this.toString() + " used Sleep Powder!";
 	}

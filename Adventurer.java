@@ -9,6 +9,8 @@ public abstract class Adventurer{
   private boolean poisonStatus;
   private boolean sleepStatus;
   private boolean seededStatus;
+  private boolean protectStatus;
+  private boolean burnStatus;
   private String type;
 
   //Abstract methods are meant to be implemented in child classes.

@@ -1,20 +1,20 @@
-
 public class Venusaur extends Adventurer{
 	private int ppCount, ppMax;
-	
-	
+
+
 	public Venusaur(){
 		super("Venusaur", 20);
 		this.ppCount = 40;
 		this.ppMax = 40;
+		this.type = "Grass";
 	}
-	
+
 	public Venusaur(String s){
-		super(s, 20);
+		super(s, 20, "Grass");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
-	
+
 	public String getSpecialName() {
 		return "PP";
 	}
@@ -34,26 +34,24 @@ public class Venusaur extends Adventurer{
 
 	public String attack(Adventurer other) {
 		other.applyDamage(1);
-		return this.toString() + " used Vine Whip! It did 1 dmg!";
+		return this.toString() + " used Vine Whip on " + other.toString() + "!";
 	}
 
 	public String support(Adventurer other) {
-		other.setPoisonStatus(true);
-		return null;
-	}
-	
-	public String support() {
-		return null;
+		other.setSeededStatus(true);
+		return this.toString() + " used Leech Seed! Seeds were planted on " + other.toString() + "!";
 	}
 
-	public String support2(Adventurer other) {
-		other.setSleepStatus(true);
-		return null;
+	public String support() {
+		foe.setSleepStatus(true);
+		return this.toString() + " used Sleep Powder!";
 	}
 
 	public String specialAttack(Adventurer other) {
-
-		return null;
+		other.applyDamage(10);
+		if(Math.random() > 0.25)
+		other.setPoisonStatus(true);
+		return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
 	}
 
 }

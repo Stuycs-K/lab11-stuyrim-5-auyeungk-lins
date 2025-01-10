@@ -70,16 +70,17 @@ public abstract class Adventurer{
   }
 
   public Adventurer(String name){
-    this(name, 10);
+    this(name, 10, "Fire");
   }
 
-  public Adventurer(String name, int hp){
+  public Adventurer(String name, int hp, String type){
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
     this.poisonStatus = false;
     this.sleepStatus = false;
     this.seededStatus = false;
+    this.type = type;
   }
 
   public void addFriend(Adventurer other) {

@@ -31,7 +31,7 @@ Support 2 - Dragon Dance (Self target, increases damage by 2x for 2 turns.)
 Special - Flare Blitz (Single target, does 10 base against fire types, double the damage against grass, and half against water types.)
 
 Blastoise
-Attack - Aqua Tail (Single target, does 1 base damage against water types, double the damage against fire, and half against grass types.)
+Attack - Aqua Tail (Single target, does 2 base damage against water types, double the damage against fire, and half against grass types.)
 Support - Haze (Single target, select a teammate to reset their status effects, including buffs.)
 Support 2 - Protect (Single target, if a teammate is attacked in the turn, they will be protected and be dealt no damage. Will wear off after the turn.)
-Special - Helping Hand (Single target, Doubles teammate's next attack damage.)
+Special - Helping Hand (Single target, doubles teammate's next attack damage.)

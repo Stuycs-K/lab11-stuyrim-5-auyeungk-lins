@@ -135,6 +135,14 @@ public abstract class Adventurer{
 	    this.seededStatus = b;
   }
 
+  public void setProtectStatus(boolean b){
+    this.protectStatus = b;
+  }
+
+  public void setBurnStatus(boolean b){
+    this.burnStatus = b;
+  }
+
   public String getType(){
     return type;
   }

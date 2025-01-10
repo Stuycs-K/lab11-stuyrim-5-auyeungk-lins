@@ -32,15 +32,34 @@ public class Blastoise extends Adventurer{
 
   public String attack(Adventurer other) {
     if (other.getType().equals("fire")){
-      other.applyDamage(1);
+      other.applyDamage(4);
       return this.toString() + " used Aqua Tail! It's super effective! (4 dmg)";
     }
     if (other.getType().equals("grass")){
       other.applyDamage(1);
       return this.toString() + " used Aqua Tail! It's not very effective... (1 dmg)";
     }
-		other.applyDamage(1);
+		other.applyDamage(2);
 		return this.toString() + " used Aqua Tail! It did 2 dmg!";
+	}
+
+  public String support(Adventurer other) {
+    // haze
+		other.setSeededStatus(true);
+		return this.toString() + " used Leech Seed! Seeds were planted on " + other.toString() + "!";
+	}
+
+	public String support() {
+    //
+		foe.setSleepStatus(true);
+		return this.toString() + " used Sleep Powder!";
+	}
+
+	public String specialAttack(Adventurer other) {
+		other.applyDamage(10);
+		if(Math.random() > 0.25)
+		other.setPoisonStatus(true);
+		return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
 	}
 
 }

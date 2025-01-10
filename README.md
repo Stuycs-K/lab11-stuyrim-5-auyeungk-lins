@@ -25,10 +25,10 @@ Support 2 - Sleep Powder (AOE, has a 75% chance to put them to sleep.)
 Special - Sludge Bomb (Single target, does 10 base damage against grass types, double the damage against water, and half against fire types. Has a 75% chance to poison the enemy.)
 
 Charizard
-Attack -
-Support -
-Support 2 -
-Special -
+Attack - Ember
+Support - Sunny Day
+Support 2 - Dragon Dance
+Special - Flare Blitz
 
 Blastoise
 Attack - Aqua Tail (Single target, does 1 base damage against water types, double the damage against fire, and half against grass types.)

@@ -131,4 +131,8 @@ public abstract class Adventurer{
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
   }
+
+  public String getType(){
+    return type;
+  }
 }

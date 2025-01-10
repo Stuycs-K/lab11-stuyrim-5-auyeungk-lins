@@ -22,17 +22,17 @@ public class Venusaur extends Adventurer{
 	}
 
 	public String attack(Adventurer other) {
-
-		return null;
+		other.applyDamage(1);
+		return this.toString() + " used Vine Whip! It did 1 dmg!";
 	}
 
 	public String support(Adventurer other) {
-
+		other.setPoisonStatus(true);
 		return null;
 	}
 
-	public String support() {
-
+	public String support2(Adventurer other) {
+		other.setSleepStatus(true);
 		return null;
 	}
 

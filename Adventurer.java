@@ -76,6 +76,17 @@ public abstract class Adventurer{
     this.name = name;
     this.HP = hp;
     this.maxHP = hp;
+    this.poisonStatus = false;
+    this.sleepStatus = false;
+    this.seededStatus = false;
+  }
+  
+  public void addFriend(Adventurer other) {
+	  friends.add(other);
+  }
+  
+  public void addFoe(Adventurer other) {
+	  foes.add(other);
   }
 
   //toString method
@@ -106,5 +117,17 @@ public abstract class Adventurer{
 
   public void setName(String s){
     this.name = s;
+  }
+  
+  public void setPoisonStatus(boolean b){
+	    this.poisonStatus = b;
+  }
+  
+  public void setSleepStatus(boolean b){
+	    this.sleepStatus = b;
+  }
+  
+  public void setSeededStatus(boolean b){
+	    this.seededStatus = b;
   }
 }

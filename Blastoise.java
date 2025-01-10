@@ -33,10 +33,14 @@ public class Blastoise extends Adventurer{
   public String attack(Adventurer other) {
     if (other.getType().equals("fire")){
       other.applyDamage(1);
-      return this.toString() + " used Aqua Tail! It's super effective! (2 dmg)";
+      return this.toString() + " used Aqua Tail! It's super effective! (4 dmg)";
+    }
+    if (other.getType().equals("grass")){
+      other.applyDamage(1);
+      return this.toString() + " used Aqua Tail! It's not very effective... (1 dmg)";
     }
 		other.applyDamage(1);
-		return this.toString() + " used Aqua Tail! It did 1 dmg!";
+		return this.toString() + " used Aqua Tail! It did 2 dmg!";
 	}
 
 }

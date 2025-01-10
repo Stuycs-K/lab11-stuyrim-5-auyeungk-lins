@@ -6,10 +6,11 @@ public class Venusaur extends Adventurer{
 		super("Venusaur", 20);
 		this.ppCount = 40;
 		this.ppMax = 40;
+		this.type = "Grass";
 	}
 
 	public Venusaur(String s){
-		super(s, 20);
+		super(s, 20, "Grass");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}

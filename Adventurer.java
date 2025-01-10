@@ -145,7 +145,7 @@ public abstract class Adventurer{
   }
 	
   public void setBurnStatus(boolean b){
-	    this.burnStatus = b;
+	    this.protectStatus = b;
   }
 
 }

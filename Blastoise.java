@@ -2,13 +2,13 @@ public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
 
   public Blastoise(){
-		super("Blastoise", 20);
+		super("Blastoise", 20, "fire");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
 
-	public Blastoise(String s){
-		super(s, 20);
+	public Blastoise(String name){
+		super(name, 20, "fire");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
@@ -50,7 +50,7 @@ public class Blastoise extends Adventurer{
 		return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
 	}
 
-	public String support2(Adventurer other) {
+	public String support(Adventurer other) {
     // protect
 		other.setProtectStatus(true);
 		setSpecial(getSpecial() - 2);
@@ -64,7 +64,7 @@ public class Blastoise extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		// helping hand
-		return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " other.toString() + "!";
+		return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " + other.toString() + "!";
 	}
 
 }

@@ -19,21 +19,19 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 
 Venusaur
-Attack - 
+Attack -
 Support -
 Support 2 -
 Special -
 
 Charizard
-Attack - 
+Attack -
 Support -
 Support 2 -
 Special -
 
 Blastoise
-Attack - 
-Support -
-Support 2 -
-Special -
-
-
+Attack - Aqua Tail (Does 1 base damage against water types, double the damage against fire, and half against grass types.)
+Support - Haze (Select a teammate to reset their status effects, including buffs.)
+Support 2 - Protect (If a teammate is attacked in the turn, they will be protected and be dealt no damage. Will wear off after the turn.)
+Special - Helping Hand (Doubles teammate's next attack damage.)

@@ -19,10 +19,10 @@ Make a clear list of features that work/dont work
 ## Adventurer Subclasses
 
 Venusaur
-Attack -
-Support -
-Support 2 -
-Special -
+Attack - Vine Whip (Single target, does 1 base damage against grass types, double the damage against water, and half against fire types.)
+Support - Leech Seed (Single target, plants seeds on them, does damage to the enemy after each turn and heals both the user and friends.)
+Support 2 - Sleep Powder (AOE, has a 75% chance to put them to sleep.)
+Special - Sludge Bomb (Single target, does 10 base damage against grass types, double the damage against water, and half against fire types. Has a 75% chance to poison the enemy.)
 
 Charizard
 Attack -
@@ -31,7 +31,7 @@ Support 2 -
 Special -
 
 Blastoise
-Attack - Aqua Tail (Does 1 base damage against water types, double the damage against fire, and half against grass types.)
-Support - Haze (Select a teammate to reset their status effects, including buffs.)
-Support 2 - Protect (If a teammate is attacked in the turn, they will be protected and be dealt no damage. Will wear off after the turn.)
-Special - Helping Hand (Doubles teammate's next attack damage.)
+Attack - Aqua Tail (Single target, does 1 base damage against water types, double the damage against fire, and half against grass types.)
+Support - Haze (Single target, select a teammate to reset their status effects, including buffs.)
+Support 2 - Protect (Single target, if a teammate is attacked in the turn, they will be protected and be dealt no damage. Will wear off after the turn.)
+Special - Helping Hand (Single target, Doubles teammate's next attack damage.)

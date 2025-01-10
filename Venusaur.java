@@ -1,24 +1,24 @@
 
 public class Venusaur extends Adventurer{
-
+	private String pp;
+	private int ppCount, ppMax;
+	
+	
 	public String getSpecialName() {
-		return null;
+		return "PP";
 	}
 
 	public int getSpecial() {
-		
-		return 0;
+		return ppCount;
 	}
 
 
 	public int getSpecialMax() {
-	
-		return 0;
+		return ppMax;
 	}
 
 	public void setSpecial(int n) {
-
-		
+		ppCount = n;
 	}
 
 	public String attack(Adventurer other) {

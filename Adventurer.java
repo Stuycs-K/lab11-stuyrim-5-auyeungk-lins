@@ -1,7 +1,14 @@
 import java.util.Random;
+import java.util.ArrayList;
+
 public abstract class Adventurer{
   private String name;
   private int HP,maxHP;
+  private ArrayList<Adventurer> friends;
+  private ArrayList<Adventurer> foes;
+  private boolean poisonStatus;
+  private boolean sleepStatus;
+  private boolean seededStatus;
 
   //Abstract methods are meant to be implemented in child classes.
   /*

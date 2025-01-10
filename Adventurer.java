@@ -9,6 +9,7 @@ public abstract class Adventurer{
   private boolean poisonStatus;
   private boolean sleepStatus;
   private boolean seededStatus;
+  private String type;
 
   //Abstract methods are meant to be implemented in child classes.
   /*
@@ -80,11 +81,11 @@ public abstract class Adventurer{
     this.sleepStatus = false;
     this.seededStatus = false;
   }
-  
+
   public void addFriend(Adventurer other) {
 	  friends.add(other);
   }
-  
+
   public void addFoe(Adventurer other) {
 	  foes.add(other);
   }
@@ -118,15 +119,15 @@ public abstract class Adventurer{
   public void setName(String s){
     this.name = s;
   }
-  
+
   public void setPoisonStatus(boolean b){
 	    this.poisonStatus = b;
   }
-  
+
   public void setSleepStatus(boolean b){
 	    this.sleepStatus = b;
   }
-  
+
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
   }

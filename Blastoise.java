@@ -52,7 +52,7 @@ public class Blastoise extends Adventurer{
 	public String support(Adventurer other) {
     // protect
 		other.setProtectStatus(true);
-		return this.toString() + " used Protect! " + this.toString() + " protected " + other.toString() + "!";
+		return this.toString() + " used Protect! " + this.toString() + " protected " + other.toString() + "!g";
 	}
 
 	public String specialAttack(Adventurer other) {

@@ -46,20 +46,18 @@ public class Blastoise extends Adventurer{
   public String support(Adventurer other) {
     // haze
 		other.setSeededStatus(true);
-		return this.toString() + " used Leech Seed! Seeds were planted on " + other.toString() + "!";
+		return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
 	}
 
-	public String support() {
-    //
-		foe.setSleepStatus(true);
-		return this.toString() + " used Sleep Powder!";
+	public String support2(Adventurer other) {
+    // protect
+		other.setProtectStatus(true);
+		return this.toString() + " used Protect! " + other.toString() + " was protected!";
 	}
 
 	public String specialAttack(Adventurer other) {
-		other.applyDamage(10);
-		if(Math.random() > 0.25)
-		other.setPoisonStatus(true);
-		return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+		//return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+		return "temp";
 	}
 
 }

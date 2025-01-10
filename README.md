@@ -22,13 +22,13 @@ Venusaur
 Attack - Vine Whip (Single target, does 1 base damage against grass types, double the damage against water, and half against fire types.)
 Support - Leech Seed (Single target, plants seeds on them, does damage to the enemy after each turn and heals both the user and friends.)
 Support 2 - Sleep Powder (AOE, has a 75% chance to put them to sleep.)
-Special - Sludge Bomb (Single target, does 10 base damage against grass types, double the damage against water, and half against fire types. Has a 75% chance to poison the enemy.)
+Special - Sludge Bomb (Single target, does 5 base damage against grass types, double the damage against water, and half against fire types. Has a 75% chance to poison the enemy.)
 
 Charizard
-Attack - Ember
-Support - Sunny Day
-Support 2 - Dragon Dance
-Special - Flare Blitz
+Attack - Ember (Single target, does 2 base damage against fire types, double the damage against grass, and half against water types.)
+Support - Flamethrower (Single target, does 5 base damage against fire types, double the damage against grass, and half against water types.)
+Support 2 - Dragon Dance (Self target, increases damage by 2x for 2 turns.)
+Special - Flare Blitz (Single target, does 10 base against fire types, double the damage against grass, and half against water types.)
 
 Blastoise
 Attack - Aqua Tail (Single target, does 1 base damage against water types, double the damage against fire, and half against grass types.)

@@ -9,6 +9,8 @@ public abstract class Adventurer{
   private boolean poisonStatus;
   private boolean sleepStatus;
   private boolean seededStatus;
+	private boolean protectStatus;
+	private boolean burnStatus;
   private String type;
 
   //Abstract methods are meant to be implemented in child classes.
@@ -108,11 +110,16 @@ public abstract class Adventurer{
   public int getmaxHP(){
     return maxHP;
   }
+	
+	public String getType(){
+		return type;
+	}
+	
+	//Set Methods
   public void setmaxHP(int newMax){
     maxHP = newMax;
   }
 
-  //Set Methods
   public void setHP(int health){
     this.HP = health;
   }
@@ -132,8 +139,13 @@ public abstract class Adventurer{
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
   }
-
-  public String getType(){
-    return type;
+	
+  public void setProtectStatus(boolean b){
+	    this.protectStatus = b;
   }
+	
+  public void setBurnStatus(boolean b){
+	    this.burnStatus = b;
+  }
+
 }

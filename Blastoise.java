@@ -49,10 +49,10 @@ public class Blastoise extends Adventurer{
 		return this.toString() + " used Haze! Seeds were planted on " + other.toString() + "!";
 	}
 
-	public String support(other) {
+	public String support(Adventurer other) {
     // protect
 		other.setProtectStatus(true);
-		return this.toString() + " used Protect! " + this.toString() + " protected " ;
+		return this.toString() + " used Protect! " + this.toString() + " protected " + other.toString() + "!";
 	}
 
 	public String specialAttack(Adventurer other) {

@@ -1,8 +1,19 @@
 
 public class Venusaur extends Adventurer{
-	private String pp;
 	private int ppCount, ppMax;
 	
+	
+	public Venusaur(){
+		super("Venusaur", 20);
+		this.ppCount = 40;
+		this.ppMax = 40;
+	}
+	
+	public Venusaur(String s){
+		super(s, 20);
+		this.ppCount = 40;
+		this.ppMax = 40;
+	}
 	
 	public String getSpecialName() {
 		return "PP";
@@ -28,6 +39,10 @@ public class Venusaur extends Adventurer{
 
 	public String support(Adventurer other) {
 		other.setPoisonStatus(true);
+		return null;
+	}
+	
+	public String support() {
 		return null;
 	}
 

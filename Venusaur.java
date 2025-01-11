@@ -34,14 +34,14 @@ public class Venusaur extends Adventurer{
 	public String attack(Adventurer other) {
 		// vine whip
 		
-		 if (other.getType().equals("fire")){
+		 if (other.getType().equals("Water")){
 		      other.applyDamage(4);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
 		      return this.toString() + " used Vine Whip! It's super effective! (4 dmg)";
 		    }
-		    if (other.getType().equals("grass")){
+		    if (other.getType().equals("Fire")){
 		      other.applyDamage(1);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);

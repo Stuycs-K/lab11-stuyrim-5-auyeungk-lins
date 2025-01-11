@@ -33,12 +33,42 @@ public class Charizard extends Adventurer{
 	
 	public String attack(Adventurer other) {
 		// ember
-		return null;
+		 if (other.getType().equals("Grass")){
+		      other.applyDamage(4);
+		      if(getSpecial() != getSpecialMax()) {
+					setSpecial(getSpecial() + 1);
+				}
+		      return this.toString() + " used Ember! It's super effective! (4 dmg)";
+		    }
+		    if (other.getType().equals("Water")){
+		      other.applyDamage(1);
+		      if(getSpecial() != getSpecialMax()) {
+					setSpecial(getSpecial() + 1);
+				}
+		      return this.toString() + " used Ember! It's not very effective... (1 dmg)";
+		    }
+				other.applyDamage(2);
+				if(getSpecial() != getSpecialMax()) {
+					setSpecial(getSpecial() + 1);
+				}
+				return this.toString() + " used Ember! It did 2 dmg!";
 	}
 
 	public String support(Adventurer other) {
 		// flamethrower
-		return null;
+		if (other.getType().equals("Grass")){
+		      other.applyDamage(8);
+		      
+		      return this.toString() + " used Flamethrower! It's super effective! (8 dmg)";
+		    }
+		    if (other.getType().equals("Water")){
+		      other.applyDamage(2);
+		      
+		      return this.toString() + " used Flamethrower! It's not very effective... (2 dmg)";
+		    }
+				other.applyDamage(4);
+				
+				return this.toString() + " used Flamethrower! It did 4 dmg!";
 	}
 
 
@@ -49,7 +79,19 @@ public class Charizard extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		// flare blitz
-		return null;
+		if (other.getType().equals("Grass")){
+		      other.applyDamage(12);
+		      
+		      return this.toString() + " used Flare Blitz! It's super effective! (12 dmg)";
+		    }
+		    if (other.getType().equals("Water")){
+		      other.applyDamage(3);
+		     
+		      return this.toString() + " used Flare Blitz! It's not very effective... (3 dmg)";
+		    }
+				other.applyDamage(6);
+				
+				return this.toString() + " used Flare Blitz! It did 6 dmg!";
 	}
 	
 }

@@ -2,13 +2,13 @@ public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
 
   public Blastoise(){
-		super("Blastoise", 20, "fire");
+		super("Blastoise", 20, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
 
 	public Blastoise(String name){
-		super(name, 20, "fire");
+		super(name, 20, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}

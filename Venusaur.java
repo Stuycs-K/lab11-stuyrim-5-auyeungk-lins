@@ -3,10 +3,9 @@ public class Venusaur extends Adventurer{
 
 
 	public Venusaur(){
-		super("Venusaur", 20);
+		super("Venusaur", 20, "Grass");
 		this.ppCount = 40;
 		this.ppMax = 40;
-		this.type = "Grass";
 	}
 
 	public Venusaur(String s){
@@ -33,25 +32,58 @@ public class Venusaur extends Adventurer{
 	}
 
 	public String attack(Adventurer other) {
+		// vine whip
 		other.applyDamage(1);
+		if(getSpecial() != getSpecialMax()) {
+			setSpecial(getSpecial() + 1);
+		}
 		return this.toString() + " used Vine Whip on " + other.toString() + "!";
 	}
 
 	public String support(Adventurer other) {
-		other.setSeededStatus(true);
-		return this.toString() + " used Leech Seed! Seeds were planted on " + other.toString() + "!";
+		// leech seed
+		if (getSpecial()-2 > 0){
+			other.setSeededStatus(true);
+			setSpecial(getSpecial() - 2);
+			return this.toString() + " used Leech Seed! Seeds were planted on " + other.toString() + "!";
+		}
+		else{
+			return "Not enough PP!";
+		}
+		
 	}
 
 	public String support() {
-		foe.setSleepStatus(true);
-		return this.toString() + " used Sleep Powder!";
+		// sleep powder
+		if (getSpecial()-2 > 0){
+			for(Adventurer foe : foes) {
+				if(Math.random() > 0.25) {
+					foe.setSleepStatus(true);
+				}
+			}
+			setSpecial(getSpecial() - 2);
+			return this.toString() + " used Sleep Powder!";
+		}
+		else{
+			return "Not enough PP!";
+		}
+		
 	}
 
 	public String specialAttack(Adventurer other) {
-		other.applyDamage(10);
-		if(Math.random() > 0.25)
-		other.setPoisonStatus(true);
-		return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+		//sludge bomb
+		if (getSpecial()-5 > 0){
+			other.applyDamage(10);
+			if(Math.random() > 0.25) {
+				other.setPoisonStatus(true);
+			}	
+			setSpecial(getSpecial() - 5);
+			return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+		}
+		else{
+			return "Not enough PP!";
+		}
+		
 	}
 
 }

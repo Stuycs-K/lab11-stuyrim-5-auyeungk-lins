@@ -56,9 +56,9 @@ public class Venusaur extends Adventurer{
 	public String support() {
 		// sleep powder
 		if (getSpecial()-2 > 0){
-			for(Adventurer foe : foes) {
+			for(int i = 0; i < foeCount(); i++) {
 				if(Math.random() > 0.25) {
-					foe.setSleepStatus(true);
+					getFoe(i).setSleepStatus(true);
 				}
 			}
 			setSpecial(getSpecial() - 2);

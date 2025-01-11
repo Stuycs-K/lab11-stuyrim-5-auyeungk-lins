@@ -88,13 +88,25 @@ public abstract class Adventurer{
 		this.helpingHandStatus = false;
     this.type = type;
   }
-
+  //friends and foes methods
   public void addFriend(Adventurer other) {
 	  friends.add(other);
   }
 
   public void addFoe(Adventurer other) {
 	  foes.add(other);
+  }
+  
+  public Adventurer getFriend(int i) {
+	  return friends.get(i);
+  }
+  
+  public Adventurer getFoe(int i) {
+	  return foes.get(i);
+  }
+  
+  public int foeCount() {
+	  return foes.size();
   }
 
   //toString method

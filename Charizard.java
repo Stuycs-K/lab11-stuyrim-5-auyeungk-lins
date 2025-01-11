@@ -38,14 +38,14 @@ public class Charizard extends Adventurer{
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Ember! It's super effective! (4 dmg)";
+		      return this.toString() + " used Ember! It's super effective! It did 4 dmg!";
 		    }
 		    if (other.getType().equals("Water")){
 		      other.applyDamage(1);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Ember! It's not very effective... (1 dmg)";
+		      return this.toString() + " used Ember! It's not very effective... It did 1 dmg...";
 		    }
 				other.applyDamage(2);
 				if(getSpecial() != getSpecialMax()) {
@@ -59,12 +59,12 @@ public class Charizard extends Adventurer{
 		if (other.getType().equals("Grass")){
 		      other.applyDamage(8);
 		      
-		      return this.toString() + " used Flamethrower! It's super effective! (8 dmg)";
+		      return this.toString() + " used Flamethrower! It's super effective! It did 8 dmg!";
 		    }
 		    if (other.getType().equals("Water")){
 		      other.applyDamage(2);
 		      
-		      return this.toString() + " used Flamethrower! It's not very effective... (2 dmg)";
+		      return this.toString() + " used Flamethrower! It's not very effective... It did 2 dmg...";
 		    }
 				other.applyDamage(4);
 				
@@ -82,12 +82,12 @@ public class Charizard extends Adventurer{
 		if (other.getType().equals("Grass")){
 		      other.applyDamage(12);
 		      
-		      return this.toString() + " used Flare Blitz! It's super effective! (12 dmg)";
+		      return this.toString() + " used Flare Blitz! It's super effective! It did 12 dmg!";
 		    }
 		    if (other.getType().equals("Water")){
 		      other.applyDamage(3);
 		     
-		      return this.toString() + " used Flare Blitz! It's not very effective... (3 dmg)";
+		      return this.toString() + " used Flare Blitz! It's not very effective... It did 3 dmg...";
 		    }
 				other.applyDamage(6);
 				

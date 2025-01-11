@@ -39,14 +39,14 @@ public class Venusaur extends Adventurer{
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Vine Whip! It's super effective! (4 dmg)";
+		      return this.toString() + " used Vine Whip! It's super effective! It did 4 dmg!";
 		    }
 		    if (other.getType().equals("Fire")){
 		      other.applyDamage(1);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Vine Whip! It's not very effective... (1 dmg)";
+		      return this.toString() + " used Vine Whip! It's not very effective... It did 1 dmg...";
 		    }
 				other.applyDamage(2);
 				if(getSpecial() != getSpecialMax()) {

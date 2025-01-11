@@ -170,6 +170,18 @@ public abstract class Adventurer{
   
   // status conditions
   
+  public boolean getSleep() {
+	  return sleepStatus;
+  }
+  
+  public boolean getProtect() {
+	  return protectStatus;
+  }
+  
+  public boolean getHH() {
+	  return helpingHandStatus;
+  }
+  
   public String applyPoison() {
 	  if(this.poisonStatus == true) {
 		  this.applyDamage(1);

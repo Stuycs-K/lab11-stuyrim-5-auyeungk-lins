@@ -1,7 +1,7 @@
 public class Charizard extends Adventurer{
 	private int ppCount, ppMax, swordsDance; 
 	public Charizard(){
-		super("Charizard", 15, "Fire");
+		super("Charizard", 30, "Fire");
 		this.ppCount = 40;
 		this.ppMax = 40;
 		this.swordsDance = 0;
@@ -129,7 +129,7 @@ public class Charizard extends Adventurer{
 	public String specialAttack(Adventurer other) {
 		// flare blitz
 		if (getSpecial()-10 > 0){
-			int baseDmg = 6;
+			int baseDmg = 8;
 			if(other.getProtect() == true){
 				baseDmg = 0;
 				other.setProtectStatus(false);

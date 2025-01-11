@@ -3,7 +3,7 @@ public class Venusaur extends Adventurer{
 
 
 	public Venusaur(){
-		super("Venusaur", 20, "Grass");
+		super("Venusaur", 50, "Grass");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
@@ -33,26 +33,34 @@ public class Venusaur extends Adventurer{
 
 	public String attack(Adventurer other) {
 		// vine whip
-		
+		int baseDmg = 2;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHelpingHandStatus(false);
+		}
 		 if (other.getType().equals("Water")){
-		      other.applyDamage(4);
+		      other.applyDamage(baseDmg * 2);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Vine Whip! It's super effective! It did 4 dmg!";
+		      return this.toString() + " used Vine Whip! It's super effective! It did "+ baseDmg *2 +" dmg!";
 		    }
 		    if (other.getType().equals("Fire")){
-		      other.applyDamage(1);
+		      other.applyDamage(baseDmg/2);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Vine Whip! It's not very effective... It did 1 dmg...";
+		      return this.toString() + " used Vine Whip! It's not very effective... It did "+ baseDmg/2 +" dmg...";
 		    }
-				other.applyDamage(2);
+				other.applyDamage(baseDmg);
 				if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-				return this.toString() + " used Vine Whip! It did 2 dmg!";
+				return this.toString() + " used Vine Whip! It did "+ baseDmg +" dmg!";
 	}
 
 	public String support(Adventurer other) {
@@ -88,12 +96,34 @@ public class Venusaur extends Adventurer{
 	public String specialAttack(Adventurer other) {
 		//sludge bomb
 		if (getSpecial()-5 > 0){
-			other.applyDamage(10);
-			if(Math.random() > 0.25) {
-				other.setPoisonStatus(true);
-			}	
+			int baseDmg = 6;
+			if(other.getProtect() == true){
+				baseDmg = 0;
+				other.setProtectStatus(false);
+			}
+			if(this.getHH() == true){
+				baseDmg*=2;
+				this.setHelpingHandStatus(false);
+			}
 			setSpecial(getSpecial() - 5);
-			return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+			if(baseDmg != 0) {
+				 if(Math.random() > 0.25) {
+					 other.setPoisonStatus(true);
+				 }
+			 }
+			if (other.getType().equals("Water")){
+			      other.applyDamage(baseDmg * 2);
+			      
+			      return this.toString() + " used Sludge Bomb! It's super effective! It did "+ baseDmg*2+ " dmg!";
+			    }
+			    if (other.getType().equals("Fire")){
+			      other.applyDamage(baseDmg/2);
+			      
+			      return this.toString() + " used Sludge Bomb! It's not very effective... It did " + baseDmg/2 + " dmg...";
+			    }
+					other.applyDamage(baseDmg);
+					
+					return this.toString() + " used Sludge Bomb! It did " + baseDmg + " dmg!";
 		}
 		else{
 			return "Not enough PP!";

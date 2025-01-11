@@ -2,7 +2,7 @@ public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
 
   public Blastoise(){
-		super("Blastoise", 20, "Water");
+		super("Blastoise", 40, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
@@ -31,25 +31,29 @@ public class Blastoise extends Adventurer{
 	}
 
   public String attack(Adventurer other) {
-    if (other.getType().equals("fire")){
-      other.applyDamage(4);
-      if(getSpecial() != getSpecialMax()) {
-			setSpecial(getSpecial() + 1);
+	  int baseDmg = 2;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
 		}
-      return this.toString() + " used Aqua Tail! It's super effective! It did 4 dmg!";
-    }
-    if (other.getType().equals("grass")){
-      other.applyDamage(1);
-      if(getSpecial() != getSpecialMax()) {
-			setSpecial(getSpecial() + 1);
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHelpingHandStatus(false);
 		}
-      return this.toString() + " used Aqua Tail! It's not very effective... It did 1 dmg...";
-    }
-		other.applyDamage(2);
 		if(getSpecial() != getSpecialMax()) {
 			setSpecial(getSpecial() + 1);
 		}
-		return this.toString() + " used Aqua Tail! It did 2 dmg!";
+		
+    if (other.getType().equals("Fire")){
+      other.applyDamage(baseDmg * 2);
+      return this.toString() + " used Aqua Tail! It's super effective! It did "+ baseDmg*2 +" dmg!";
+    }
+    if (other.getType().equals("Grass")){
+      other.applyDamage(baseDmg);
+      return this.toString() + " used Aqua Tail! It's not very effective... It did "+baseDmg/2+" dmg...";
+    }
+		other.applyDamage(baseDmg);
+		return this.toString() + " used Aqua Tail! It did "+baseDmg+" dmg!";
 	}
 
   public String support(Adventurer other) {

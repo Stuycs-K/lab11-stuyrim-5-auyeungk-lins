@@ -31,44 +31,80 @@ public class Charizard extends Adventurer{
 		ppCount = n;
 	}
 	
+	public void setSD(int n) {
+		this.swordsDance = n;
+	}
+	
+	public int getSD() {
+		return swordsDance;
+	}
+	
 	public String attack(Adventurer other) {
 		// ember
-		 if (other.getType().equals("Grass")){
-		      other.applyDamage(4);
+		int baseDmg = 2;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHelpingHandStatus(false);
+		}
+		if(this.getSD() > 0) {
+			baseDmg*=2;
+			setSD(getSD() - 1);
+		}
+		 
+		if (other.getType().equals("Grass")){
+		      other.applyDamage(baseDmg * 2);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Ember! It's super effective! It did 4 dmg!";
+		      return this.toString() + " used Ember! It's super effective! It did " + baseDmg*2 + " dmg!";
 		    }
 		    if (other.getType().equals("Water")){
-		      other.applyDamage(1);
+		      other.applyDamage(baseDmg/2);
 		      if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-		      return this.toString() + " used Ember! It's not very effective... It did 1 dmg...";
+		      return this.toString() + " used Ember! It's not very effective... It did " + baseDmg/2 +" dmg...";
 		    }
-				other.applyDamage(2);
+				other.applyDamage(baseDmg);
 				if(getSpecial() != getSpecialMax()) {
 					setSpecial(getSpecial() + 1);
 				}
-				return this.toString() + " used Ember! It did 2 dmg!";
+				return this.toString() + " used Ember! It did "+ baseDmg+" dmg!";
 	}
 
 	public String support(Adventurer other) {
 		// flamethrower
+		int baseDmg = 4;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHelpingHandStatus(false);
+		}
+		if(this.getSD() > 0) {
+			baseDmg*=2;
+			setSD(getSD() - 1);
+		}
+		
 		if (other.getType().equals("Grass")){
-		      other.applyDamage(8);
+		      other.applyDamage(baseDmg * 2);
 		      
-		      return this.toString() + " used Flamethrower! It's super effective! It did 8 dmg!";
+		      return this.toString() + " used Flamethrower! It's super effective! It did "+ baseDmg*2+ " dmg!";
 		    }
 		    if (other.getType().equals("Water")){
-		      other.applyDamage(2);
+		      other.applyDamage(baseDmg/2);
 		      
-		      return this.toString() + " used Flamethrower! It's not very effective... It did 2 dmg...";
+		      return this.toString() + " used Flamethrower! It's not very effective... It did " + baseDmg/2 + " dmg...";
 		    }
-				other.applyDamage(4);
+				other.applyDamage(baseDmg);
 				
-				return this.toString() + " used Flamethrower! It did 4 dmg!";
+				return this.toString() + " used Flamethrower! It did " + baseDmg + " dmg!";
 	}
 
 
@@ -79,19 +115,33 @@ public class Charizard extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		// flare blitz
+		int baseDmg = 6;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHelpingHandStatus(false);
+		}
+		if(this.getSD() > 0) {
+			baseDmg*=2;
+			setSD(getSD() - 1);
+		}
+		
 		if (other.getType().equals("Grass")){
-		      other.applyDamage(12);
+		      other.applyDamage(baseDmg * 2);
 		      
-		      return this.toString() + " used Flare Blitz! It's super effective! It did 12 dmg!";
+		      return this.toString() + " used Flare Blitz! It's super effective! It did "+ baseDmg*2 +" dmg!";
 		    }
 		    if (other.getType().equals("Water")){
-		      other.applyDamage(3);
+		      other.applyDamage(baseDmg/2);
 		     
-		      return this.toString() + " used Flare Blitz! It's not very effective... It did 3 dmg...";
+		      return this.toString() + " used Flare Blitz! It's not very effective... It did "+ baseDmg/2 +" dmg...";
 		    }
-				other.applyDamage(6);
+				other.applyDamage(baseDmg);
 				
-				return this.toString() + " used Flare Blitz! It did 6 dmg!";
+				return this.toString() + " used Flare Blitz! It did " + baseDmg + " dmg!";
 	}
 	
 }

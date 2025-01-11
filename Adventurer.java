@@ -167,5 +167,37 @@ public abstract class Adventurer{
   public void setHelpingHandStatus(boolean b){
 	    this.helpingHandStatus = b;
   }
-
+  
+  // status conditions
+  
+  public String applyPoison() {
+	  if(this.poisonStatus == true) {
+		  this.applyDamage(1);
+		  return this.toString() + " is poisoned! It did 1 dmg!";
+	  }else {
+		  return null;
+	  }
+  }
+  
+  public String applyBurn() {
+	  if(this.burnStatus == true) {
+		  this.applyDamage(1);
+		  return this.toString() + " is burned! It did 1 dmg!";
+	  }else {
+		  return null;
+	  }
+  }
+  
+  public String applySeed() {
+	  if(this.seededStatus == true) {
+		  this.applyDamage(1);
+		  for(int i = 0; i < 3; i++) {
+			  getFoe(i).applyDamage(-1);
+		  }
+		  return this.toString() + " has seeds planted on them! It did 1 dmg! All its opponents are healed for 1 hp!";
+	  }else {
+		  return null;
+	  }
+  }
+  
 }

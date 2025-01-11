@@ -8,7 +8,7 @@ public class Blastoise extends Adventurer{
 	}
 
 	public Blastoise(String name){
-		super(name, 20, "Water");
+		super(name, 40, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}

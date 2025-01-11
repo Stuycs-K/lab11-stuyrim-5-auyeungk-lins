@@ -1,14 +1,14 @@
 public class Charizard extends Adventurer{
 	private int ppCount, ppMax, swordsDance; 
 	public Charizard(){
-		super("Charizard", 30, "Fire");
+		super("Charizard", 25, "Fire");
 		this.ppCount = 40;
 		this.ppMax = 40;
 		this.swordsDance = 0;
 	}
 
 	public Charizard(String s){
-		super(s, 15, "Fire");
+		super(s, 25, "Fire");
 		this.ppCount = 40;
 		this.ppMax = 40;
 		this.swordsDance = 0;

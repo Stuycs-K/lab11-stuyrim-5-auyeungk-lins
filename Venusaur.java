@@ -9,7 +9,7 @@ public class Venusaur extends Adventurer{
 	}
 
 	public Venusaur(String s){
-		super(s, 20, "Grass");
+		super(s, 50, "Grass");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
@@ -96,7 +96,7 @@ public class Venusaur extends Adventurer{
 	public String specialAttack(Adventurer other) {
 		//sludge bomb
 		if (getSpecial()-5 > 0){
-			int baseDmg = 6;
+			int baseDmg = 4;
 			if(other.getProtect() == true){
 				baseDmg = 0;
 				other.setProtectStatus(false);

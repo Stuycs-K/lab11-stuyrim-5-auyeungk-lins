@@ -5,7 +5,7 @@ public class CodeWarrior extends Adventurer{
   /*the other constructors ultimately call the constructor
   *with all parameters.*/
   public CodeWarrior(String name, int hp, String language){
-    super(name,hp);
+    super(name,hp, "fire");
     caffeineMax = 12;
     caffeine = caffeineMax/2;
     preferredLanguage = language;

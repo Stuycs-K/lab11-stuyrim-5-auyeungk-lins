@@ -45,26 +45,38 @@ public class Blastoise extends Adventurer{
 
   public String support(Adventurer other) {
     // haze
-		other.setSeededStatus(true);
-		setSpecial(getSpecial() - 2);
-		return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
-	}
-
-	public String support(Adventurer other) {
-    // protect
-		other.setProtectStatus(true);
-		setSpecial(getSpecial() - 2);
-		if (other.toString().equals("Blastoise")){
-			return this.toString() + " used Protect on itself!";
+		if (getSpecial()-2 > 0){
+			other.setSeededStatus(true);
+			setSpecial(getSpecial() - 2);
+			return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
 		}
 		else{
-			return this.toString() + " used Protect! " + other.toString() + " was protected!";
+			return "Not enough PP!";
+		}
+	}
+
+	public String support() {
+    // protect
+		if (getSpecial()-2 > 0){
+			this.setProtectStatus(true);
+			setSpecial(getSpecial() - 2);
+			return this.toString() + " used Protect!";
+		}
+		else{
+			return "Not enough PP!";
 		}
 	}
 
 	public String specialAttack(Adventurer other) {
 		// helping hand
-		return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " + other.toString() + "!";
+		if (getSpecial()-5 > 0){
+			other.setHelpingHandStatus(true);
+			setSpecial(getSpecial() - 5);
+			return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " + other.toString() + "!";
+		}
+		else{
+			return "Not enough PP!";
+		}
 	}
 
 }

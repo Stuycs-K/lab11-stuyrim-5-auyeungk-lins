@@ -11,6 +11,7 @@ public abstract class Adventurer{
   private boolean seededStatus;
 	private boolean protectStatus;
 	private boolean burnStatus;
+	private boolean helpingHandStatus;
   private String type;
 
   //Abstract methods are meant to be implemented in child classes.
@@ -82,6 +83,9 @@ public abstract class Adventurer{
     this.poisonStatus = false;
     this.sleepStatus = false;
     this.seededStatus = false;
+		this.protectStatus = false;
+		this.burnStatus = false;
+		this.helpingHandStatus = false;
     this.type = type;
   }
 
@@ -145,7 +149,11 @@ public abstract class Adventurer{
   }
 	
   public void setBurnStatus(boolean b){
-	    this.protectStatus = b;
+	    this.burnStatus = b;
+  }
+	
+  public void setHelpingHandStatus(boolean b){
+	    this.helpingHandStatus = b;
   }
 
 }

@@ -86,7 +86,11 @@ public class Boss extends Adventurer{
 			}else {
 				int healAmt = getmaxHP() - getHP();
 				setHP(getmaxHP());
-				return this.toString() + " used Recover! It restored " + healAmt + " HP!";
+				if(healAmt > 0) {
+					return this.toString() + " used Recover! It restored " + healAmt + " HP!";
+				}else {
+					return this.toString() + " used Recover! Its HP was already full!";
+				}
 			}
 		}else {
 			return this.toString() + " has not enough PP!";

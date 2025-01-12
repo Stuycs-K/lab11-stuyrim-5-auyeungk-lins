@@ -38,7 +38,7 @@ public class Blastoise extends Adventurer{
 		}
 		if(this.getHH() == true){
 			baseDmg*=2;
-			this.setHelpingHandStatus(false);
+			this.setHHStatus(false);
 		}
 		if(getSpecial() != getSpecialMax()) {
 			setSpecial(getSpecial() + 1);
@@ -57,11 +57,16 @@ public class Blastoise extends Adventurer{
 	}
 
   public String support(Adventurer other) {
-    // haze
+    // protect
 		if (getSpecial()-2 > 0){
-			other.setSeededStatus(true);
+			other.setProtectStatus(true);
 			setSpecial(getSpecial() - 2);
-			return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
+			if (other.toString().equals(this.toString())){
+				return this.toString() + " used Protect on itself!";
+			}
+			else{
+				return this.toString() + " used Protect!" + other.toString() + " was protected!";
+			}
 		}
 		else{
 			return "Not enough PP!";
@@ -69,11 +74,15 @@ public class Blastoise extends Adventurer{
 	}
 
 	public String support() {
-    // protect
+    // haze
 		if (getSpecial()-2 > 0){
-			this.setProtectStatus(true);
+			for(int i = 0; i < foeCount(); i++) {
+				if(Math.random() > 0.25) {
+					getFoe(i).setSleepStatus(true);
+				}
+			}
 			setSpecial(getSpecial() - 2);
-			return this.toString() + " used Protect!";
+			return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
 		}
 		else{
 			return "Not enough PP!";
@@ -83,7 +92,7 @@ public class Blastoise extends Adventurer{
 	public String specialAttack(Adventurer other) {
 		// helping hand
 		if (getSpecial()-5 > 0){
-			other.setHelpingHandStatus(true);
+			other.setHHStatus(true);
 			setSpecial(getSpecial() - 5);
 			return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " + other.toString() + "!";
 		}

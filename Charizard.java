@@ -48,7 +48,7 @@ public class Charizard extends Adventurer{
 		}
 		if(this.getHH() == true){
 			baseDmg*=2;
-			this.setHelpingHandStatus(false);
+			this.setHHStatus(false);
 		}
 		if(this.getSD() > 0) {
 			baseDmg*=2;
@@ -90,7 +90,7 @@ public class Charizard extends Adventurer{
 			}
 			if(this.getHH() == true){
 				baseDmg*=2;
-				this.setHelpingHandStatus(false);
+				this.setHHStatus(false);
 			}
 			if(this.getSD() > 0) {
 				baseDmg*=2;
@@ -136,7 +136,7 @@ public class Charizard extends Adventurer{
 			}
 			if(this.getHH() == true){
 				baseDmg*=2;
-				this.setHelpingHandStatus(false);
+				this.setHHStatus(false);
 			}
 			if(this.getSD() > 0) {
 				baseDmg*=2;

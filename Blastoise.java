@@ -76,13 +76,14 @@ public class Blastoise extends Adventurer{
 	public String support() {
     // haze
 		if (getSpecial()-2 > 0){
-			for(int i = 0; i < foeCount(); i++) {
+			for(int i = 0; i < 4; i++) {
 				if(Math.random() > 0.25) {
 					getFoe(i).setSleepStatus(true);
+					getFriend(i).setSleepStatus(true);
 				}
 			}
 			setSpecial(getSpecial() - 2);
-			return this.toString() + " used Haze! " + other.toString() + "'s status effects are cleared!";
+			return this.toString() + " used Haze! All status effects are cleared!";
 		}
 		else{
 			return "Not enough PP!";

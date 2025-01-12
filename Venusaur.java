@@ -40,7 +40,7 @@ public class Venusaur extends Adventurer{
 		}
 		if(this.getHH() == true){
 			baseDmg*=2;
-			this.setHelpingHandStatus(false);
+			this.setHHStatus(false);
 		}
 		 if (other.getType().equals("Water")){
 		      other.applyDamage(baseDmg * 2);

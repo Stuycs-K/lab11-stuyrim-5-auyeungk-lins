@@ -85,7 +85,7 @@ public abstract class Adventurer{
     this.seededStatus = false;
 		this.protectStatus = false;
 		this.burnStatus = false;
-		this.helpingHandStatus = false;
+		this.HHStatus = false;
     this.type = type;
   }
   //friends and foes methods

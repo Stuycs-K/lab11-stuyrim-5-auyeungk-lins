@@ -8,12 +8,90 @@ public class Game{
   public static void main(String[] args) {
     run();
   }
+	
+  /*Base colors*/
+  public static final int BLACK = 30;
+  public static final int RED = 31;
+  public static final int GREEN = 32;
+  public static final int YELLOW = 33;
+  public static final int BLUE = 34;
+  public static final int MAGENTA = 35;
+  public static final int CYAN = 36;
+  public static final int WHITE = 37;
+
+  /*Text modifiers to be ADDED to a color*/
+  public static final int BACKGROUND = 10;
+  public static final int BRIGHT = 60;
+
+  /*Text modifiers that are separate from color*/
+  public static final int BOLD = 1;
+  public static final int UNDERLINE = 4;
+  public static final int INVERTED = 7;
+
+  /*Reset colors*/
+  public static void reset(){
+    System.out.print("\u001b[0m");
+  }
+
+
+  public static void hideCursor(){
+    System.out.print("\u001b[?25l");
+  }
+
+  public static void showCursor(){
+    System.out.print("\u001b[?25h");
+  }
+
+  /*Move the cursor to a specified row/col on the terminal*/
+  public static void go(int row,int col){
+    System.out.print("\u001b[" + row + ";" + col + "f");
+  }
+
+  /*Erases all text on the terminal.*/
+  public static void clear(){
+    System.out.print("\u001b[2J");
+  }
+
+  /*Overloaded Colorize methods.
+  c1,c2 and c3 are any color modifiers such as bold/color/background color etc.
+  */
+  public static String colorize(String text,int c1){
+    return ("\u001b[" + c1 + "m"+text+"\u001b[0m");
+  }
+  public static String colorize(String text,int c1,int c2){
+    return ("\u001b[" + c1 + ";" + c2 + "m"+text+"\u001b[0m");
+  }
+  public static String colorize(String text,int c1,int c2,int c3){
+    return ("\u001b[" + c1 + ";" + c2 + ";" + c3 + "m"+text+"\u001b[0m");
+  }
 
   //Display the borders of your screen that will not change.
   //Do not write over the blank areas where text will appear or parties will appear.
   public static void drawBackground(){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+		go(1,1);
+		for (int i = 0; i < 81; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(0, i+1);
+		}
+		
+		go(2,1);
+		for (int i = 0; i < 31; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(i+1, 0);
+		}
+		
+		go(2,80);
+		for (int i = 0; i < 31; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(i+1, 80);
+		}
+		
+		go(30,1);
+		for (int i = 0; i < 81; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(30, i+1);
+		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -22,7 +100,8 @@ public class Game{
   //use this method in your other text drawing methods to make things simpler.
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+    go(startRow, startCol);
+		System.out.println(colorize(s, WHITE));
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -38,7 +117,14 @@ public class Game{
   */
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+		int textIndex = 0;
+		int textLength = text.length();
+		for (int i = row; i < height+row && textIndex < textLength; i++){
+			for (int j = col; j < width+col; j ++){
+				drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+				textIndex++;
+			}
+		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -48,7 +134,14 @@ public class Game{
     //return a random adventurer (choose between all available subclasses)
     //feel free to overload this method to allow specific names/stats.
     public static Adventurer createRandomAdventurer(){
-      return new CodeWarrior("Bob"+(int)(Math.random()*100));
+			int roll = (int)(Math.random()*3);
+			if (roll == 0){
+				return new Charizard();
+			}
+			if (roll == 1){
+				return new Venusaur();
+			}
+			return new Blastoise();
     }
 
     /*Display a List of 2-4 adventurers on the rows row through row+3 (4 rows max)
@@ -63,7 +156,7 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      //YOUR CODE HERE
+      
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
@@ -88,6 +181,7 @@ public class Game{
   public static void drawScreen(){
 
     drawBackground();
+		//TextBox(2, 4, 10, 10, "This is a very very long text!");
 
     //draw player party
 
@@ -132,7 +226,7 @@ public class Game{
     //Make an ArrayList of Adventurers and add 2-4 Adventurers to it.
     ArrayList<Adventurer> party = new ArrayList<>();
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
+    party.add(createRandomAdventurer());
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;

@@ -1,16 +1,18 @@
 public class Boss extends Adventurer{
-	 private int ppCount, ppMax;
+	 private int ppCount, ppMax, buff;
 
 	  public Boss(){
 			super("Mewtwo", 100, "Psychic");
 			this.ppCount = 80;
 			this.ppMax = 80;
+			this.buff = 0;
 		}
 
 		public Boss(String name){
 			super(name, 100, "Psychic");
 			this.ppCount = 80;
 			this.ppMax = 80;
+			this.buff = 0;
 		}
 
 		public String getSpecialName() {
@@ -29,21 +31,55 @@ public class Boss extends Adventurer{
 	  public void setSpecial(int n) {
 			ppCount = n;
 		}
+	  
+	  public void setBuff(int n) {
+			this.buff = n;
+		}
+		
+		public int getBuff() {
+			return buff;
+		}
 
 	public String attack(Adventurer other) {
-
-		return null;
+		int baseDmg = 4;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(getBuff() > 0) {
+			baseDmg*=2;
+			setBuff(0);
+		}
+		if(getSpecial() != getSpecialMax()) {
+			setSpecial(getSpecial() + 1);
+		}
+		other.applyDamage(baseDmg);
+		return this.toString() + " used Psychic! It did " + baseDmg + " dmg!";
 	}
 
 
 	public String support(Adventurer other) {
-
-		return null;
+		int baseDmg = 6;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(getBuff() > 0) {
+			baseDmg*=2;
+			setBuff(0);
+		}
+		if(getSpecial() - 10 > 0) {
+			other.applyDamage(baseDmg);
+			setBuff(1);
+			return this.toString() + " used Power-Up Punch! It did " + baseDmg + " dmg!";
+		}else {
+			return this.toString() + " has not enough PP!";
+		}
 	}
 
 
 	public String support() {
-		if(getSpecial() - 5 > 0) {
+		if(getSpecial() - 10 > 0) {
 			if(getHP() < getmaxHP()/2) {
 				setHP(getHP() + getmaxHP());
 				return this.toString() + " used Recover! It restored " + getmaxHP()/2 + " HP!";
@@ -59,8 +95,21 @@ public class Boss extends Adventurer{
 	}
 
 	public String specialAttack(Adventurer other) {
-
-		return null;
+		int baseDmg = 10;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(getBuff() > 0) {
+			baseDmg*=2;
+			setBuff(0);
+		}
+		if(getSpecial() - 20 > 0) {
+			other.applyDamage(baseDmg);
+			return this.toString() + " used Psyshock! It did " + baseDmg + " dmg!";
+		}else {
+			return this.toString() + " has not enough PP!";
+		}
 	}
 	
 }

@@ -11,7 +11,7 @@ public abstract class Adventurer{
   private boolean seededStatus;
 	private boolean protectStatus;
 	private boolean burnStatus;
-	private boolean helpingHandStatus;
+	private boolean HHStatus;
   private String type;
 
   //Abstract methods are meant to be implemented in child classes.
@@ -164,8 +164,8 @@ public abstract class Adventurer{
 	    this.burnStatus = b;
   }
 	
-  public void setHelpingHandStatus(boolean b){
-	    this.helpingHandStatus = b;
+  public void setHHStatus(boolean b){
+	    this.HHStatus = b;
   }
   
   // status conditions
@@ -179,7 +179,7 @@ public abstract class Adventurer{
   }
   
   public boolean getHH() {
-	  return helpingHandStatus;
+	  return HHStatus;
   }
   
   public String applyPoison() {

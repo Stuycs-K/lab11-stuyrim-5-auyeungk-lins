@@ -43,8 +43,19 @@ public class Boss extends Adventurer{
 
 
 	public String support() {
-
-		return null;
+		if(getSpecial() - 5 > 0) {
+			if(getHP() < getmaxHP()/2) {
+				setHP(getHP() + getmaxHP());
+				return this.toString() + " used Recover! It restored " + getmaxHP()/2 + " HP!";
+			}else {
+				int healAmt = getmaxHP() - getHP();
+				setHP(getmaxHP());
+				return this.toString() + " used Recover! It restored " + healAmt + " HP!";
+			}
+		}else {
+			return this.toString() + " has not enough PP!";
+		}
+		
 	}
 
 	public String specialAttack(Adventurer other) {

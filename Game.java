@@ -259,6 +259,7 @@ public class Game{
       TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
+      String partyType = party[whichPlayer].getType();
       if(partyTurn){
 
         //Process user input for the last Adventurer:
@@ -277,21 +278,63 @@ public class Game{
         }
         else if(input.startsWith("special ") || input.startsWith("sp" )){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          if (partyType.equals("Fire") || partyType.equals("Grass")){
+            if (input.endsWith("1")){
+              party[whichPlayer].specialAttack(enemies[0]);
+            }
+            if (input.endsWith("2")){
+              party[whichPlayer].specialAttack(enemies[1]);
+            }
+            if (input.endsWith("3")){
+              party[whichPlayer].specialAttack(enemies[2]);
+            }
+          }
+          else{
+            if (input.endsWith("1")){
+              party[whichPlayer].specialAttack(party[0]);
+            }
+            if (input.endsWith("2")){
+              party[whichPlayer].specialAttack(party[1]);
+            }
+            if (input.endsWith("3")){
+              party[whichPlayer].specialAttack(party[2]);
+            }
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("support1 ") || input.startsWith("su1 ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          if (partyType.equals("Fire") || partyType.equals("Grass")){
+            if (input.endsWith("1")){
+              party[whichPlayer].support(enemies[0]);
+            }
+            if (input.endsWith("2")){
+              party[whichPlayer].support(enemies[1]);
+            }
+            if (input.endsWith("3")){
+              party[whichPlayer].support(enemies[2]);
+            }
+          }
+          else{
+            if (input.endsWith("1")){
+              party[whichPlayer].support(party[0]);
+            }
+            if (input.endsWith("2")){
+              party[whichPlayer].support(party[1]);
+            }
+            if (input.endsWith("3")){
+              party[whichPlayer].support(party[2]);
+            }
+          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
         else if(input.startsWith("support2 ") || input.startsWith("su2 ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          //YOUR CODE HERE
+          party[whichPlayer].support();
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -322,7 +365,31 @@ public class Game{
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        //YOUR CODE HERE
+        int rollPerson = (int)(Math.random()*3);
+        int rollAttack = (int)(Math.random()*4);
+        String enemyType = enemies[whichOpponent].getType();
+        if (rollAttack == 0){
+          enemies[whichOpponent].attack(party[rollPerson]);
+        }
+        if (rollAttack == 1){
+          if (enemyType.equals("Fire") || enemyType.equals("Grass")){
+            enemies[whichOpponent].specialAttack(party[rollPerson]);
+          }
+          else{
+            enemies[whichOpponent].specialAttack(enemies[rollPerson]);
+          }
+        }
+        if (rollAttack == 2){
+          if (enemyType.equals("Fire") || enemyType.equals("Grass")){
+            enemies[whichOpponent].support(party[rollPerson]);
+          }
+          else{
+            enemies[whichOpponent].support(enemies[rollPerson]);
+          }
+        }
+        if (rollAttack == 3){
+          enemies[whichOpponent].support();
+        }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 

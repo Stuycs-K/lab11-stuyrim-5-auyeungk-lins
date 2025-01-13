@@ -8,7 +8,7 @@ public class Game{
   public static void main(String[] args) {
     run();
   }
-	
+
   /*Base colors*/
   public static final int BLACK = 30;
   public static final int RED = 31;
@@ -74,19 +74,19 @@ public class Game{
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(0, i+1);
 		}
-		
+
 		go(2,1);
 		for (int i = 0; i < 31; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(i+1, 0);
 		}
-		
+
 		go(2,80);
 		for (int i = 0; i < 31; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(i+1, 80);
 		}
-		
+
 		go(30,1);
 		for (int i = 0; i < 81; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
@@ -156,7 +156,7 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      
+
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
@@ -260,17 +260,32 @@ public class Game{
       if(partyTurn){
 
         //Process user input for the last Adventurer:
-        if(input.equals("attack") || input.equals("a")){
+        if(input.startsWith("attack ") || input.startsWith("a ")){
+          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+          if (input.endsWith("1")){
+            party[whichPlayer].attack(enemies[0]);
+          }
+          if (input.endsWith("2")){
+            party[whichPlayer].attack(enemies[1]);
+          }
+          if (input.endsWith("3")){
+            party[whichPlayer].attack(enemies[2]);
+          }
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+        else if(input.startsWith("special ") || input.startsWith("sp" )){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("special") || input.equals("sp")){
+        else if(input.startsWith("support1 ") || input.startsWith("su1 ")){
+          //"support 0" or "su 0" or "su 2" etc.
+          //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           //YOUR CODE HERE
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("su ") || input.startsWith("support ")){
+        else if(input.startsWith("support2 ") || input.startsWith("su2 ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/

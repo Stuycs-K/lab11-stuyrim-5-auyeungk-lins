@@ -158,7 +158,59 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+      //enemies
+      if(enemies.size() == 1){
+        TextBox(2,6,18,78, enemies.get(0).toString() + " - " + enemies.get(0).getType());
+        TextBox(3,6,18,78, "HP: " + colorByPercent(enemies.get(0).getHP(), enemies.get(0).getmaxHP()));
+        TextBox(4,6,18,78, "PP: " + colorByPercent(enemies.get(0).getSpecial(), enemies.get(0).getSpecialMax()));
+        String status = "";
+        if(enemies.get(0).getPoisonStatus() == true){
+          status + "PSN ";
+        }
+        if(enemies.get(0).getSleepStatus() == true){
+          status + "SLP ";
+        }
+        if(enemies.get(0).getBurnStatus() == true){
+          status + "BRN ";
+        }
+        TextBox(5,6,18,78, status);
+      }
+      if(enemies.size() == 2){
+        TextBox(2,3,18,78, enemies.get(0).toString() + " - " + enemies.get(0).getType());
+        TextBox(3,3,18,78, "HP: " + colorByPercent(enemies.get(0).getHP(), enemies.get(0).getmaxHP()));
+        TextBox(4,3,18,78, "PP: " + colorByPercent(enemies.get(0).getSpecial(), enemies.get(0).getSpecialMax()));
+        String status = "";
+        if(enemies.get(0).getPoisonStatus() == true){
+          status + "PSN ";
+        }
+        if(enemies.get(0).getSleepStatus() == true){
+          status + "SLP ";
+        }
+        if(enemies.get(0).getBurnStatus() == true){
+          status + "BRN ";
+        }
+        TextBox(5,3,18,78, status);
+        status = "";
 
+        TextBox(2,18,18,78, enemies.get(1).toString() + " - " + enemies.get(1).getType());
+        TextBox(3,18,18,78, "HP: " + colorByPercent(enemies.get(1).getHP(), enemies.get(1).getmaxHP()));
+        TextBox(4,18,18,78, "PP: " + colorByPercent(enemies.get(1).getSpecial(), enemies.get(1).getSpecialMax()));
+        String status = "";
+        if(enemies.get(0).getPoisonStatus() == true){
+          status + "PSN ";
+        }
+        if(enemies.get(0).getSleepStatus() == true){
+          status + "SLP ";
+        }
+        if(enemies.get(0).getBurnStatus() == true){
+          status + "BRN ";
+        }
+        TextBox(5,18,18,78, status);
+        status = "";
+      }
+      if(enemies.size() == 3){
+        TextBox(2,2,28,78, "")
+      }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 

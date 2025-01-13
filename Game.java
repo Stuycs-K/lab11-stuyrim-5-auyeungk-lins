@@ -121,8 +121,10 @@ public class Game{
 		int textLength = text.length();
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
+        if(textIndex != textLength){
 				drawText(Character.toString(text.charAt(textIndex)), i, j+1);
 				textIndex++;
+      }
 			}
 		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -254,7 +256,7 @@ public class Game{
       input = userInput(in);
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){

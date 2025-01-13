@@ -2,13 +2,13 @@ public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
 
   public Blastoise(){
-		super("Blastoise", 20);
+		super("Blastoise", 40, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
 
-	public Blastoise(String s){
-		super(s, 20);
+	public Blastoise(String name){
+		super(name, 40, "Water");
 		this.ppCount = 40;
 		this.ppMax = 40;
 	}
@@ -31,35 +31,75 @@ public class Blastoise extends Adventurer{
 	}
 
   public String attack(Adventurer other) {
-    if (other.getType().equals("fire")){
-      other.applyDamage(4);
-      return this.toString() + " used Aqua Tail! It's super effective! (4 dmg)";
+	  int baseDmg = 2;
+		if(other.getProtect() == true){
+			baseDmg = 0;
+			other.setProtectStatus(false);
+		}
+		if(this.getHH() == true){
+			baseDmg*=2;
+			this.setHHStatus(false);
+		}
+		if(getSpecial() != getSpecialMax()) {
+			setSpecial(getSpecial() + 1);
+		}
+
+    if (other.getType().equals("Fire")){
+      other.applyDamage(baseDmg * 2);
+      return this.toString() + " used Aqua Tail! It's super effective! It did "+ baseDmg*2 +" dmg!";
     }
-    if (other.getType().equals("grass")){
-      other.applyDamage(1);
-      return this.toString() + " used Aqua Tail! It's not very effective... (1 dmg)";
+    if (other.getType().equals("Grass")){
+      other.applyDamage(baseDmg);
+      return this.toString() + " used Aqua Tail! It's not very effective... It did "+baseDmg/2+" dmg...";
     }
-		other.applyDamage(2);
-		return this.toString() + " used Aqua Tail! It did 2 dmg!";
+		other.applyDamage(baseDmg);
+		return this.toString() + " used Aqua Tail! It did "+baseDmg+" dmg!";
 	}
 
   public String support(Adventurer other) {
-    // haze
-		other.setSeededStatus(true);
-		return this.toString() + " used Haze! Seeds were planted on " + other.toString() + "!";
+    // protect
+		if (getSpecial()-2 > 0){
+			other.setProtectStatus(true);
+			setSpecial(getSpecial() - 2);
+			if (other.toString().equals(this.toString())){
+				return this.toString() + " used Protect on itself!";
+			}
+			else{
+				return this.toString() + " used Protect!" + other.toString() + " was protected!";
+			}
+		}
+		else{
+			return "Not enough PP!";
+		}
 	}
 
-	public String support(Adventurer other) {
-    // protect
-		other.setProtectStatus(true);
-		return this.toString() + " used Protect! " + this.toString() + " protected " + other.toString() + "!g";
+	public String support() {
+    // haze
+		if (getSpecial()-2 > 0){
+			for(int i = 0; i < 4; i++) {
+				if(Math.random() > 0.25) {
+					getFoe(i).setSleepStatus(true);
+					getFriend(i).setSleepStatus(true);
+				}
+			}
+			setSpecial(getSpecial() - 2);
+			return this.toString() + " used Haze! All status effects are cleared!";
+		}
+		else{
+			return "Not enough PP!";
+		}
 	}
 
 	public String specialAttack(Adventurer other) {
-		other.applyDamage(10);
-		if(Math.random() > 0.25)
-		other.setPoisonStatus(true);
-		return this.toString() + " used Sludge Bomb on " + other.toString() + "!";
+		// helping hand
+		if (getSpecial()-5 > 0){
+			other.setHHStatus(true);
+			setSpecial(getSpecial() - 5);
+			return this.toString() + " used Helping Hand! " + this.toString() + " is ready to help " + other.toString() + "!";
+		}
+		else{
+			return "Not enough PP!";
+		}
 	}
 
 }

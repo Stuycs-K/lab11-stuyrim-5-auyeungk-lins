@@ -9,8 +9,14 @@ public abstract class Adventurer{
   private boolean poisonStatus;
   private boolean sleepStatus;
   private boolean seededStatus;
+<<<<<<< HEAD
   private boolean protectStatus;
   private boolean burnStatus;
+=======
+	private boolean protectStatus;
+	private boolean burnStatus;
+	private boolean HHStatus;
+>>>>>>> 64ad6311a7eb5bc88222695b4ac2ca04a9de56e4
   private String type;
 
   //Abstract methods are meant to be implemented in child classes.
@@ -82,15 +88,30 @@ public abstract class Adventurer{
     this.poisonStatus = false;
     this.sleepStatus = false;
     this.seededStatus = false;
+		this.protectStatus = false;
+		this.burnStatus = false;
+		this.HHStatus = false;
     this.type = type;
   }
-
+  //friends and foes methods
   public void addFriend(Adventurer other) {
 	  friends.add(other);
   }
 
   public void addFoe(Adventurer other) {
 	  foes.add(other);
+  }
+  
+  public Adventurer getFriend(int i) {
+	  return friends.get(i);
+  }
+  
+  public Adventurer getFoe(int i) {
+	  return foes.get(i);
+  }
+  
+  public int foeCount() {
+	  return foes.size();
   }
 
   //toString method
@@ -110,11 +131,16 @@ public abstract class Adventurer{
   public int getmaxHP(){
     return maxHP;
   }
+	
+	public String getType(){
+		return type;
+	}
+	
+	//Set Methods
   public void setmaxHP(int newMax){
     maxHP = newMax;
   }
 
-  //Set Methods
   public void setHP(int health){
     this.HP = health;
   }
@@ -134,6 +160,7 @@ public abstract class Adventurer{
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
   }
+<<<<<<< HEAD
 
   public void setProtectStatus(boolean b){
     this.protectStatus = b;
@@ -145,5 +172,63 @@ public abstract class Adventurer{
 
   public String getType(){
     return type;
+=======
+	
+  public void setProtectStatus(boolean b){
+	    this.protectStatus = b;
+>>>>>>> 64ad6311a7eb5bc88222695b4ac2ca04a9de56e4
   }
+	
+  public void setBurnStatus(boolean b){
+	    this.burnStatus = b;
+  }
+	
+  public void setHHStatus(boolean b){
+	    this.HHStatus = b;
+  }
+  
+  // status conditions
+  
+  public boolean getSleep() {
+	  return sleepStatus;
+  }
+  
+  public boolean getProtect() {
+	  return protectStatus;
+  }
+  
+  public boolean getHH() {
+	  return HHStatus;
+  }
+  
+  public String applyPoison() {
+	  if(this.poisonStatus == true) {
+		  this.applyDamage(1);
+		  return this.toString() + " is poisoned! It did 1 dmg!";
+	  }else {
+		  return null;
+	  }
+  }
+  
+  public String applyBurn() {
+	  if(this.burnStatus == true) {
+		  this.applyDamage(1);
+		  return this.toString() + " is burned! It did 1 dmg!";
+	  }else {
+		  return null;
+	  }
+  }
+  
+  public String applySeed() {
+	  if(this.seededStatus == true) {
+		  this.applyDamage(1);
+		  for(int i = 0; i < 3; i++) {
+			  getFoe(i).applyDamage(-1);
+		  }
+		  return this.toString() + " has seeds planted on them! It did 1 dmg! All its opponents are healed for 1 hp!";
+	  }else {
+		  return null;
+	  }
+  }
+  
 }

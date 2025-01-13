@@ -8,7 +8,7 @@ public class Game{
   public static void main(String[] args) {
     run();
   }
-	
+
   /*Base colors*/
   public static final int BLACK = 30;
   public static final int RED = 31;
@@ -74,19 +74,19 @@ public class Game{
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(0, i+1);
 		}
-		
+
 		go(2,1);
 		for (int i = 0; i < 31; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(i+1, 0);
 		}
-		
+
 		go(2,80);
 		for (int i = 0; i < 31; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(i+1, 80);
 		}
-		
+
 		go(30,1);
 		for (int i = 0; i < 81; i++){
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
@@ -121,8 +121,10 @@ public class Game{
 		int textLength = text.length();
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
+        if(textIndex != textLength){
 				drawText(Character.toString(text.charAt(textIndex)), i, j+1);
 				textIndex++;
+      }
 			}
 		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -156,7 +158,7 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      
+
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
     }
 
@@ -254,7 +256,7 @@ public class Game{
       input = userInput(in);
 
       //example debug statment
-      TextBox(24,2,1,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       if(partyTurn){

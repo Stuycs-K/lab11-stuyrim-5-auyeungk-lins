@@ -160,9 +160,9 @@ public class Game{
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     	String status = "";
       if(party.size() == 1){
-        TextBox(startRow,6,18,78, party.get(0).toString() + " - " + party.get(0).getType());
-        TextBox(startRow+1,6,18,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
-        TextBox(startRow+2,6,18,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        TextBox(startRow,6,22,78, party.get(0).toString() + " - " + party.get(0).getType());
+        TextBox(startRow+1,6,22,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,6,22,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
         if(party.get(0).getPoisonStatus() == true){
           status+="PSN ";
         }
@@ -172,7 +172,7 @@ public class Game{
         if(party.get(0).getBurnStatus() == true){
           status+="BRN ";
         }
-        TextBox(startRow+3,6,18,78, status);
+        TextBox(startRow+3,6,22,78, status);
       }
       if(party.size() == 2){
         TextBox(startRow,3,18,78, party.get(0).toString() + " - " + party.get(0).getType());
@@ -190,9 +190,9 @@ public class Game{
         TextBox(startRow+3,3,18,78, status);
         status = "";
 
-        TextBox(startRow,18,18,78, party.get(1).toString() + " - " + party.get(1).getType());
-        TextBox(startRow+1,18,18,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
-        TextBox(startRow+2,18,18,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
+        TextBox(startRow,16,12,78, party.get(1).toString() + " - " + party.get(1).getType());
+        TextBox(startRow+1,16,12,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,16,12,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
         if(party.get(1).getPoisonStatus() == true){
           status +="PSN ";
         }
@@ -202,7 +202,7 @@ public class Game{
         if(party.get(1).getBurnStatus() == true){
           status +="BRN ";
         }
-        TextBox(startRow+3,18,18,78, status);
+        TextBox(startRow+3,16,12,78, status);
         status = "";
       }
       if(party.size() == 3){
@@ -221,9 +221,9 @@ public class Game{
         TextBox(startRow+3,2,18,78, status);
         status = "";
 
-        TextBox(startRow,11,18,78, party.get(1).toString() + " - " + party.get(1).getType());
-        TextBox(startRow+1,11,18,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
-        TextBox(startRow+2,11,18,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
+        TextBox(startRow,15,18,78, party.get(1).toString() + " - " + party.get(1).getType());
+        TextBox(startRow+1,15,18,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,15,18,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
         status = "";
         if(party.get(1).getPoisonStatus() == true){
           status +="PSN ";
@@ -234,12 +234,12 @@ public class Game{
         if(party.get(1).getBurnStatus() == true){
           status +="BRN ";
         }
-        TextBox(startRow+3,11,18,78, status);
+        TextBox(startRow+3,15,18,78, status);
         status = "";
         
-        TextBox(startRow,20,18,78, party.get(2).toString() + " - " + party.get(2).getType());
-        TextBox(startRow+1,20,18,78, "HP: " + colorByPercent(party.get(2).getHP(), party.get(2).getmaxHP()));
-        TextBox(startRow+2,20,18,78, "PP: " + colorByPercent(party.get(2).getSpecial(), party.get(2).getSpecialMax()));
+        TextBox(startRow,22,18,78, party.get(2).toString() + " - " + party.get(2).getType());
+        TextBox(startRow+1,22,18,78, "HP: " + colorByPercent(party.get(2).getHP(), party.get(2).getmaxHP()));
+        TextBox(startRow+2,22,18,78, "PP: " + colorByPercent(party.get(2).getSpecial(), party.get(2).getSpecialMax()));
         status = "";
         if(party.get(2).getPoisonStatus() == true){
           status += "PSN ";
@@ -250,7 +250,7 @@ public class Game{
         if(party.get(2).getBurnStatus() == true){
           status+="BRN ";
         }
-        TextBox(startRow+3,20,18,78, status);
+        TextBox(startRow+3,22,18,78, status);
         status = "";
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -350,7 +350,9 @@ public class Game{
       input = userInput(in);
 
       //example debug statment
-      TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
+      drawParty(enemies, 2);
+      drawParty(party, 6);
+      //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       String partyType = party.get(whichPlayer).getType();

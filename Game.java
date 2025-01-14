@@ -158,102 +158,99 @@ public class Game{
     public static void drawParty(ArrayList<Adventurer> party,int startRow){
 
       /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-      //enemies
-      if(enemies.size() == 1){
-        TextBox(2,6,18,78, enemies.get(0).toString() + " - " + enemies.get(0).getType());
-        TextBox(3,6,18,78, "HP: " + colorByPercent(enemies.get(0).getHP(), enemies.get(0).getmaxHP()));
-        TextBox(4,6,18,78, "PP: " + colorByPercent(enemies.get(0).getSpecial(), enemies.get(0).getSpecialMax()));
-        String status = "";
-        if(enemies.get(0).getPoisonStatus() == true){
-          status + "PSN ";
+    	String status = "";
+      if(party.size() == 1){
+        TextBox(startRow,6,18,78, party.get(0).toString() + " - " + party.get(0).getType());
+        TextBox(startRow+1,6,18,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,6,18,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        if(party.get(0).getPoisonStatus() == true){
+          status+="PSN ";
         }
-        if(enemies.get(0).getSleepStatus() == true){
-          status + "SLP ";
+        if(party.get(0).getSleepStatus() == true){
+          status+="SLP ";
         }
-        if(enemies.get(0).getBurnStatus() == true){
-          status + "BRN ";
+        if(party.get(0).getBurnStatus() == true){
+          status+="BRN ";
         }
-        TextBox(5,6,18,78, status);
+        TextBox(startRow+3,6,18,78, status);
       }
-      if(enemies.size() == 2){
-        TextBox(2,3,18,78, enemies.get(0).toString() + " - " + enemies.get(0).getType());
-        TextBox(3,3,18,78, "HP: " + colorByPercent(enemies.get(0).getHP(), enemies.get(0).getmaxHP()));
-        TextBox(4,3,18,78, "PP: " + colorByPercent(enemies.get(0).getSpecial(), enemies.get(0).getSpecialMax()));
-        String status = "";
-        if(enemies.get(0).getPoisonStatus() == true){
-          status + "PSN ";
+      if(party.size() == 2){
+        TextBox(startRow,3,18,78, party.get(0).toString() + " - " + party.get(0).getType());
+        TextBox(startRow+1,3,18,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,3,18,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        if(party.get(0).getPoisonStatus() == true){
+          status +="PSN ";
         }
-        if(enemies.get(0).getSleepStatus() == true){
-          status + "SLP ";
+        if(party.get(0).getSleepStatus() == true){
+          status +="SLP ";
         }
-        if(enemies.get(0).getBurnStatus() == true){
-          status + "BRN ";
+        if(party.get(0).getBurnStatus() == true){
+          status +="BRN ";
         }
-        TextBox(5,3,18,78, status);
+        TextBox(startRow+3,3,18,78, status);
         status = "";
 
-        TextBox(2,18,18,78, enemies.get(1).toString() + " - " + enemies.get(1).getType());
-        TextBox(3,18,18,78, "HP: " + colorByPercent(enemies.get(1).getHP(), enemies.get(1).getmaxHP()));
-        TextBox(4,18,18,78, "PP: " + colorByPercent(enemies.get(1).getSpecial(), enemies.get(1).getSpecialMax()));
-        String status = "";
-        if(enemies.get(1).getPoisonStatus() == true){
-          status + "PSN ";
+        TextBox(startRow,18,18,78, party.get(1).toString() + " - " + party.get(1).getType());
+        TextBox(startRow+1,18,18,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,18,18,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
+        if(party.get(1).getPoisonStatus() == true){
+          status +="PSN ";
         }
-        if(enemies.get(1).getSleepStatus() == true){
-          status + "SLP ";
+        if(party.get(1).getSleepStatus() == true){
+          status +="SLP ";
         }
-        if(enemies.get(1).getBurnStatus() == true){
-          status + "BRN ";
+        if(party.get(1).getBurnStatus() == true){
+          status +="BRN ";
         }
-        TextBox(5,18,18,78, status);
+        TextBox(startRow+3,18,18,78, status);
         status = "";
       }
-      if(enemies.size() == 3){
-        TextBox(2,2,18,78, enemies.get(0).toString() + " - " + enemies.get(0).getType());
-        TextBox(3,2,18,78, "HP: " + colorByPercent(enemies.get(0).getHP(), enemies.get(0).getmaxHP()));
-        TextBox(4,2,18,78, "PP: " + colorByPercent(enemies.get(0).getSpecial(), enemies.get(0).getSpecialMax()));
-        String status = "";
-        if(enemies.get(0).getPoisonStatus() == true){
-          status + "PSN ";
+      if(party.size() == 3){
+        TextBox(startRow,2,18,78, party.get(0).toString() + " - " + party.get(0).getType());
+        TextBox(startRow+1,2,18,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,2,18,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        if(party.get(0).getPoisonStatus() == true){
+          status +="PSN ";
         }
-        if(enemies.get(0).getSleepStatus() == true){
-          status + "SLP ";
+        if(party.get(0).getSleepStatus() == true){
+          status +="SLP ";
         }
-        if(enemies.get(0).getBurnStatus() == true){
-          status + "BRN ";
+        if(party.get(0).getBurnStatus() == true){
+          status +="BRN ";
         }
-        TextBox(5,2,18,78, status);
+        TextBox(startRow+3,2,18,78, status);
         status = "";
 
-        TextBox(2,11,18,78, enemies.get(1).toString() + " - " + enemies.get(1).getType());
-        TextBox(3,11,18,78, "HP: " + colorByPercent(enemies.get(1).getHP(), enemies.get(1).getmaxHP()));
-        TextBox(4,11,18,78, "PP: " + colorByPercent(enemies.get(1).getSpecial(), enemies.get(1).getSpecialMax()));
-        String status = "";
-        if(enemies.get(1).getPoisonStatus() == true){
-          status + "PSN ";
-        }
-        if(enemies.get(1).getSleepStatus() == true){
-          status + "SLP ";
-        }
-        if(enemies.get(1).getBurnStatus() == true){
-          status + "BRN ";
-        }
-        TextBox(5,11,18,78, status);
+        TextBox(startRow,11,18,78, party.get(1).toString() + " - " + party.get(1).getType());
+        TextBox(startRow+1,11,18,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,11,18,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
         status = "";
-        TextBox(2,20,18,78, enemies.get(2).toString() + " - " + enemies.get(2).getType());
-        TextBox(3,20,18,78, "HP: " + colorByPercent(enemies.get(2).getHP(), enemies.get(2).getmaxHP()));
-        TextBox(4,20,18,78, "PP: " + colorByPercent(enemies.get(2).getSpecial(), enemies.get(2).getSpecialMax()));
-        String status = "";
-        if(enemies.get(2).getPoisonStatus() == true){
-          status + "PSN ";
+        if(party.get(1).getPoisonStatus() == true){
+          status +="PSN ";
         }
-        if(enemies.get(2).getSleepStatus() == true){
-          status + "SLP ";
+        if(party.get(1).getSleepStatus() == true){
+          status +="SLP ";
         }
-        if(enemies.get(2).getBurnStatus() == true){
-          status + "BRN ";
+        if(party.get(1).getBurnStatus() == true){
+          status +="BRN ";
         }
-        TextBox(5,20,18,78, status);
+        TextBox(startRow+3,11,18,78, status);
+        status = "";
+        
+        TextBox(startRow,20,18,78, party.get(2).toString() + " - " + party.get(2).getType());
+        TextBox(startRow+1,20,18,78, "HP: " + colorByPercent(party.get(2).getHP(), party.get(2).getmaxHP()));
+        TextBox(startRow+2,20,18,78, "PP: " + colorByPercent(party.get(2).getSpecial(), party.get(2).getSpecialMax()));
+        status = "";
+        if(party.get(2).getPoisonStatus() == true){
+          status += "PSN ";
+        }
+        if(party.get(2).getSleepStatus() == true){
+          status += "SLP ";
+        }
+        if(party.get(2).getBurnStatus() == true){
+          status+="BRN ";
+        }
+        TextBox(startRow+3,20,18,78, status);
         status = "";
       }
       /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/

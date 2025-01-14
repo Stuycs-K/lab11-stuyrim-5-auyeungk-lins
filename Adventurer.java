@@ -147,10 +147,18 @@ public abstract class Adventurer{
   public void setPoisonStatus(boolean b){
 	    this.poisonStatus = b;
   }
+  
+  public boolean getPoisonStatus(){
+	    return poisonStatus;
+}
 
   public void setSleepStatus(boolean b){
 	    this.sleepStatus = b;
   }
+  
+  public boolean getSleepStatus(){
+	    return sleepStatus;
+}
 
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
@@ -163,6 +171,10 @@ public abstract class Adventurer{
   public void setBurnStatus(boolean b){
     this.burnStatus = b;
   }
+  
+  public boolean getBurnStatus(){
+	    return burnStatus;
+}
 
   public void setHHStatus(boolean b){
 	    this.HHStatus = b;

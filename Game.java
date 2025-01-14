@@ -356,14 +356,7 @@ public class Game{
       input = userInput(in);
 
       //example debug statment
-      party.get(0).setSleepStatus(true);
-      party.get(0).setPoisonStatus(true);
-      party.get(1).setBurnStatus(true);
-      party.get(2).setPoisonStatus(true);
-      enemies.get(0).setSleepStatus(true);
-      enemies.get(1).setSleepStatus(true);
-      enemies.get(1).setPoisonStatus(true);
-        enemies.get(1).setBurnStatus(true);
+
       party.get(0).applyDamage(20);
       party.get(1).applyDamage(1);
       party.get(2).applyDamage(10);
@@ -371,13 +364,15 @@ public class Game{
 
 
       drawParty(enemies, 3);
-      drawParty(party, 25);
+      drawParty(party, 24);
       //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
       String partyType = party.get(whichPlayer).getType();
-      if(partyTurn){
-
+      while(partyTurn && whichPlayer < 3){
+        TextBox(28,2,78,30, preprompt);
+        go(29,2);
+        showCursor();
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -391,8 +386,8 @@ public class Game{
             party.get(whichPlayer).attack(enemies.get(2));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
-        else if(input.startsWith("special ") || input.startsWith("sp" )){
+        }else {
+          if(input.startsWith("special ") || input.startsWith("sp" )){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
@@ -405,7 +400,7 @@ public class Game{
               party.get(whichPlayer).specialAttack(enemies.get(2));
             }
           }
-          else{
+        }else {
             if (input.endsWith("1")){
               party.get(whichPlayer).specialAttack(party.get(0));
             }
@@ -414,49 +409,51 @@ public class Game{
             }
             if (input.endsWith("3")){
               party.get(whichPlayer).specialAttack(party.get(2));
+            }else {
+              if(input.startsWith("support1 ") || input.startsWith("su1 ")){
+              //"support 0" or "su 0" or "su 2" etc.
+              //assume the value that follows su  is an integer.
+              /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+              if (partyType.equals("Fire") || partyType.equals("Grass")){
+                if (input.endsWith("1")){
+                  party.get(whichPlayer).support(enemies.get(0));
+                }
+                if (input.endsWith("2")){
+                  party.get(whichPlayer).support(enemies.get(1));
+                }
+                if (input.endsWith("3")){
+                  party.get(whichPlayer).support(enemies.get(2));
+                }
+              }else {
+                if (input.endsWith("1")){
+                  party.get(whichPlayer).support(party.get(0));
+                }
+                if (input.endsWith("2")){
+                  party.get(whichPlayer).support(party.get(1));
+                }
+                if (input.endsWith("3")){
+                  party.get(whichPlayer).support(party.get(2));
+                }else {
+                  if(input.startsWith("support2 ") || input.startsWith("su2 ")){
+              //"support 0" or "su 0" or "su 2" etc.
+              //assume the value that follows su  is an integer.
+              /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+              party.get(whichPlayer).support();
             }
+              /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+            }
+            whichPlayer++;
           }
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("support1 ") || input.startsWith("su1 ")){
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          if (partyType.equals("Fire") || partyType.equals("Grass")){
-            if (input.endsWith("1")){
-              party.get(whichPlayer).support(enemies.get(0));
-            }
-            if (input.endsWith("2")){
-              party.get(whichPlayer).support(enemies.get(1));
-            }
-            if (input.endsWith("3")){
-              party.get(whichPlayer).support(enemies.get(2));
-            }
-          }
-          else{
-            if (input.endsWith("1")){
-              party.get(whichPlayer).support(party.get(0));
-            }
-            if (input.endsWith("2")){
-              party.get(whichPlayer).support(party.get(1));
-            }
-            if (input.endsWith("3")){
-              party.get(whichPlayer).support(party.get(2));
-            }
-          }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
-        else if(input.startsWith("support2 ") || input.startsWith("su2 ")){
-          //"support 0" or "su 0" or "su 2" etc.
-          //assume the value that follows su  is an integer.
-          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          party.get(whichPlayer).support();
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }
 
+
+
+
+      partyTurn = false;
         //You should decide when you want to re-ask for user input
         //If no errors:
-        whichPlayer++;
+
 
 
         if(whichPlayer < party.size()){

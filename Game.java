@@ -55,6 +55,9 @@ public class Game{
   /*Overloaded Colorize methods.
   c1,c2 and c3 are any color modifiers such as bold/color/background color etc.
   */
+  public static String colorize(String text){
+    return ("\u001b[m" +text+"\u001b[0m");
+  }
   public static String colorize(String text,int c1){
     return ("\u001b[" + c1 + "m"+text+"\u001b[0m");
   }
@@ -119,7 +122,7 @@ public class Game{
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     go(startRow, startCol);
-		System.out.println(colorize(s, WHITE));
+		System.out.println(colorize(s));
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -381,7 +384,7 @@ public class Game{
       enemies.get(0).setSleepStatus(true);
       enemies.get(1).setSleepStatus(true);
       enemies.get(1).setPoisonStatus(true);
-        enemies.get(1).setBurnStatus(true);
+      enemies.get(1).setBurnStatus(true);
       party.get(0).applyDamage(20);
       party.get(1).applyDamage(1);
       party.get(2).applyDamage(10);
@@ -389,7 +392,7 @@ public class Game{
 
 
       drawParty(enemies, 3);
-      drawParty(party, 25);
+      drawParty(party, 21);
       //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input

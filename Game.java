@@ -353,20 +353,20 @@ public class Game{
       TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
-      String partyType = party[whichPlayer].getType();
+      String partyType = party.get(whichPlayer).getType();
       if(partyTurn){
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (input.endsWith("1")){
-            party[whichPlayer].attack(enemies[0]);
+            party.get(whichPlayer).attack(enemies.get(0));
           }
           if (input.endsWith("2")){
-            party[whichPlayer].attack(enemies[1]);
+            party.get(whichPlayer).attack(enemies.get(1));
           }
           if (input.endsWith("3")){
-            party[whichPlayer].attack(enemies[2]);
+            party.get(whichPlayer).attack(enemies.get(2));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -374,24 +374,24 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
-              party[whichPlayer].specialAttack(enemies[0]);
+              party.get(whichPlayer).specialAttack(enemies.get(0));
             }
             if (input.endsWith("2")){
-              party[whichPlayer].specialAttack(enemies[1]);
+              party.get(whichPlayer).specialAttack(enemies.get(1));
             }
             if (input.endsWith("3")){
-              party[whichPlayer].specialAttack(enemies[2]);
+              party.get(whichPlayer).specialAttack(enemies.get(2));
             }
           }
           else{
             if (input.endsWith("1")){
-              party[whichPlayer].specialAttack(party[0]);
+              party.get(whichPlayer).specialAttack(party.get(0));
             }
             if (input.endsWith("2")){
-              party[whichPlayer].specialAttack(party[1]);
+              party.get(whichPlayer).specialAttack(party.get(1));
             }
             if (input.endsWith("3")){
-              party[whichPlayer].specialAttack(party[2]);
+              party.get(whichPlayer).specialAttack(party.get(2));
             }
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -402,24 +402,24 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
-              party[whichPlayer].support(enemies[0]);
+              party.get(whichPlayer).support(enemies.get(0));
             }
             if (input.endsWith("2")){
-              party[whichPlayer].support(enemies[1]);
+              party.get(whichPlayer).support(enemies.get(1));
             }
             if (input.endsWith("3")){
-              party[whichPlayer].support(enemies[2]);
+              party.get(whichPlayer).support(enemies.get(2));
             }
           }
           else{
             if (input.endsWith("1")){
-              party[whichPlayer].support(party[0]);
+              party.get(whichPlayer).support(party.get(0));
             }
             if (input.endsWith("2")){
-              party[whichPlayer].support(party[1]);
+              party.get(whichPlayer).support(party.get(1));
             }
             if (input.endsWith("3")){
-              party[whichPlayer].support(party[2]);
+              party.get(whichPlayer).support(party.get(2));
             }
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -428,7 +428,7 @@ public class Game{
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-          party[whichPlayer].support();
+          party.get(whichPlayer).support();
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
 
@@ -461,28 +461,28 @@ public class Game{
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
         int rollPerson = (int)(Math.random()*3);
         int rollAttack = (int)(Math.random()*4);
-        String enemyType = enemies[whichOpponent].getType();
+        String enemyType = enemies.get(whichOpponent).getType();
         if (rollAttack == 0){
-          enemies[whichOpponent].attack(party[rollPerson]);
+          enemies.get(whichOpponent).attack(party.get(rollPerson));
         }
         if (rollAttack == 1){
           if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-            enemies[whichOpponent].specialAttack(party[rollPerson]);
+            enemies.get(whichOpponent).specialAttack(party.get(rollPerson));
           }
           else{
-            enemies[whichOpponent].specialAttack(enemies[rollPerson]);
+            enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson));
           }
         }
         if (rollAttack == 2){
           if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-            enemies[whichOpponent].support(party[rollPerson]);
+            enemies.get(whichOpponent).support(party.get(rollPerson));
           }
           else{
-            enemies[whichOpponent].support(enemies[rollPerson]);
+            enemies.get(whichOpponent).support(enemies.get(rollPerson));
           }
         }
         if (rollAttack == 3){
-          enemies[whichOpponent].support();
+          enemies.get(whichOpponent).support();
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 

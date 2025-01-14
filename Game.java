@@ -92,6 +92,24 @@ public class Game{
 			System.out.print(colorize(" ", WHITE+BACKGROUND));
 			go(30, i+1);
 		}
+
+    go(8,1);
+		for (int i = 0; i < 81; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(8, i+1);
+		}
+
+    go(19,1);
+		for (int i = 0; i < 81; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(19, i+1);
+		}
+
+    go(26,1);
+		for (int i = 0; i < 81; i++){
+			System.out.print(colorize(" ", WHITE+BACKGROUND));
+			go(26, i+1);
+		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 

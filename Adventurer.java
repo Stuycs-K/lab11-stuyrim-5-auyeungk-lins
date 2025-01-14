@@ -182,10 +182,6 @@ public abstract class Adventurer{
 
   // status conditions
 
-  public boolean getSleep() {
-	  return sleepStatus;
-  }
-
   public boolean getProtect() {
 	  return protectStatus;
   }

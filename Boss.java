@@ -42,6 +42,11 @@ public class Boss extends Adventurer{
 
 	public String attack(Adventurer other) {
 		int baseDmg = 4;
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);
@@ -60,6 +65,11 @@ public class Boss extends Adventurer{
 
 	public String support(Adventurer other) {
 		int baseDmg = 6;
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);
@@ -79,6 +89,11 @@ public class Boss extends Adventurer{
 
 
 	public String support() {
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(getSpecial() - 10 > 0) {
 			if(getHP() < getmaxHP()/2) {
 				setHP(getHP() + getmaxHP());
@@ -89,7 +104,7 @@ public class Boss extends Adventurer{
 				if(healAmt > 0) {
 					return this.toString() + " used Recover! It restored " + healAmt + " HP!";
 				}else {
-					return this.toString() + " used Recover! Its HP was already full!";
+					return this.toString() + " used Recover! Its HP was already full";
 				}
 			}
 		}else {
@@ -100,6 +115,11 @@ public class Boss extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		int baseDmg = 10;
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);

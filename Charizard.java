@@ -42,6 +42,11 @@ public class Charizard extends Adventurer{
 	public String attack(Adventurer other) {
 		// ember
 		int baseDmg = 2;
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);
@@ -82,6 +87,11 @@ public class Charizard extends Adventurer{
 
 	public String support(Adventurer other) {
 		// flamethrower
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-5 > 0){
 			int baseDmg = 4;
 			if(other.getProtect() == true){
@@ -122,12 +132,22 @@ public class Charizard extends Adventurer{
 
 
 	public String support() {
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		this.setSD(2);
 		return this.toString() + " used Swords Dance! It powered up its moves for the next 2 turns!";
 	}
 
 	public String specialAttack(Adventurer other) {
 		// flare blitz
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-10 > 0){
 			int baseDmg = 8;
 			if(other.getProtect() == true){

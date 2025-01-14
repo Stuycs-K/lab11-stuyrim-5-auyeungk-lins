@@ -32,6 +32,11 @@ public class Blastoise extends Adventurer{
 
   public String attack(Adventurer other) {
 	  int baseDmg = 2;
+	  int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);
@@ -58,6 +63,11 @@ public class Blastoise extends Adventurer{
 
   public String support(Adventurer other) {
     // protect
+	  int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-2 > 0){
 			other.setProtectStatus(true);
 			setSpecial(getSpecial() - 2);
@@ -75,6 +85,11 @@ public class Blastoise extends Adventurer{
 
 	public String support() {
     // haze
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-2 > 0){
 			for(int i = 0; i < 4; i++) {
 				if(Math.random() > 0.25) {
@@ -92,6 +107,11 @@ public class Blastoise extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		// helping hand
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-5 > 0){
 			other.setHHStatus(true);
 			setSpecial(getSpecial() - 5);

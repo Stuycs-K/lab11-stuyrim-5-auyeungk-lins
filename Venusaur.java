@@ -33,7 +33,12 @@ public class Venusaur extends Adventurer{
 
 	public String attack(Adventurer other) {
 		// vine whip
-		int baseDmg = 2;
+		int baseDmg = 2; 
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if(other.getProtect() == true){
 			baseDmg = 0;
 			other.setProtectStatus(false);
@@ -65,6 +70,11 @@ public class Venusaur extends Adventurer{
 
 	public String support(Adventurer other) {
 		// leech seed
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-2 > 0){
 			other.setSeededStatus(true);
 			setSpecial(getSpecial() - 2);
@@ -78,6 +88,11 @@ public class Venusaur extends Adventurer{
 
 	public String support() {
 		// sleep powder
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-2 > 0){
 			for(int i = 0; i < foeCount(); i++) {
 				if(Math.random() > 0.25) {
@@ -95,6 +110,11 @@ public class Venusaur extends Adventurer{
 
 	public String specialAttack(Adventurer other) {
 		//sludge bomb
+		int sleep = (int)(Math.random() * 101);
+		if(this.getSleepStatus() == true && sleep < 75){
+			return this.toString() + " is asleep!";
+		}
+		this.setSleepStatus(false);
 		if (getSpecial()-5 > 0){
 			int baseDmg = 4;
 			if(other.getProtect() == true){

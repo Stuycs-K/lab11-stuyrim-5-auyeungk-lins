@@ -323,7 +323,7 @@ public class Game{
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     enemies.add(createRandomAdventurer());
 		enemies.add(createRandomAdventurer());
-		//enemies.add(createRandomAdventurer());
+		enemies.add(createRandomAdventurer());
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     //Adventurers you control:
@@ -356,6 +356,20 @@ public class Game{
       input = userInput(in);
 
       //example debug statment
+      party.get(0).setSleepStatus(true);
+      party.get(0).setPoisonStatus(true);
+      party.get(1).setBurnStatus(true);
+      party.get(2).setPoisonStatus(true);
+      enemies.get(0).setSleepStatus(true);
+      enemies.get(1).setSleepStatus(true);
+      enemies.get(1).setPoisonStatus(true);
+        enemies.get(1).setBurnStatus(true);
+      party.get(0).applyDamage(20);
+      party.get(1).applyDamage(1);
+      party.get(2).applyDamage(10);
+
+
+
       drawParty(enemies, 3);
       drawParty(party, 25);
       //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );

@@ -314,7 +314,7 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
-      go(29,3);
+      go(28,3);
 
       //show cursor
       showCursor();
@@ -381,6 +381,7 @@ public class Game{
       //Read user input
       input = userInput(in);
       TextBox(27, 2, 80, 1, preprompt);
+      TextBox(29, 2, 80, 1, "Turn: " + whichPlayer + whichOpponent);
 
       //example debug statment
       /*party.get(0).setSleepStatus(true);
@@ -509,40 +510,43 @@ public class Game{
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        int rollPerson = (int)(Math.random()*3);
-        int rollAttack = (int)(Math.random()*4);
-        String enemyType = enemies.get(whichOpponent).getType();
-        if (rollAttack == 0){
-          enemies.get(whichOpponent).attack(party.get(rollPerson));
-        }
-        if (rollAttack == 1){
-          if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-            enemies.get(whichOpponent).specialAttack(party.get(rollPerson));
+        if (!partyTurn){
+          int rollPerson = (int)(Math.random()*3);
+          int rollAttack = (int)(Math.random()*4);
+          String enemyType = enemies.get(whichOpponent).getType();
+          if (rollAttack == 0){
+            enemies.get(whichOpponent).attack(party.get(rollPerson));
           }
-          else{
-            enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson));
+          if (rollAttack == 1){
+            if (enemyType.equals("Fire") || enemyType.equals("Grass")){
+              enemies.get(whichOpponent).specialAttack(party.get(rollPerson));
+            }
+            else{
+              enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson));
+            }
           }
-        }
-        if (rollAttack == 2){
-          if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-            enemies.get(whichOpponent).support(party.get(rollPerson));
+          if (rollAttack == 2){
+            if (enemyType.equals("Fire") || enemyType.equals("Grass")){
+              enemies.get(whichOpponent).support(party.get(rollPerson));
+            }
+            else{
+              enemies.get(whichOpponent).support(enemies.get(rollPerson));
+            }
           }
-          else{
-            enemies.get(whichOpponent).support(enemies.get(rollPerson));
+          if (rollAttack == 3){
+            enemies.get(whichOpponent).support();
           }
-        }
-        if (rollAttack == 3){
-          enemies.get(whichOpponent).support();
-        }
-        /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
-        //Decide where to draw the following prompt:
-        String prompt = "press enter to see next turn";
+          //Decide where to draw the following prompt:
+          String prompt = "press enter to see next turn";
 
-        whichOpponent++;
+          whichOpponent++;
 
-      }//end of one enemy.
+        }//end of one enemy.
+        }
+
 
       //modify this if statement.
       if(!partyTurn && whichOpponent >= enemies.size()){

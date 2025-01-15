@@ -64,7 +64,11 @@ public abstract class Adventurer{
   */
 
   public void applyDamage(int amount){
-    this.HP -= amount;
+    if(this.HP - amount < 0){
+      this.HP = 0;
+    }else {
+      this.HP -= amount;
+    }
   }
 
   //You did it wrong if this happens.
@@ -147,7 +151,7 @@ public abstract class Adventurer{
   public void setPoisonStatus(boolean b){
 	    this.poisonStatus = b;
   }
-  
+
   public boolean getPoisonStatus(){
 	    return poisonStatus;
 }
@@ -155,7 +159,7 @@ public abstract class Adventurer{
   public void setSleepStatus(boolean b){
 	    this.sleepStatus = b;
   }
-  
+
   public boolean getSleepStatus(){
 	    return sleepStatus;
 }
@@ -171,7 +175,7 @@ public abstract class Adventurer{
   public void setBurnStatus(boolean b){
     this.burnStatus = b;
   }
-  
+
   public boolean getBurnStatus(){
 	    return burnStatus;
 }

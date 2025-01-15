@@ -532,7 +532,7 @@ public class Game{
           }
         }
         if (rollAttack == 3){
-          enemies.get(whichOpponent).support();
+          enemies.get(whichOpponent).support(party.get(rollPerson));
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 

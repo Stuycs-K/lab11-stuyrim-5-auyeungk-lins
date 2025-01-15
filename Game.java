@@ -306,7 +306,6 @@ public class Game{
     drawBackground();
 		//TextBox(2, 4, 10, 10, "This is a very very long text!");
 
-        }
     //draw player party
 
     //draw enemy party
@@ -315,12 +314,15 @@ public class Game{
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
+      go(29,3);
 
       //show cursor
+      showCursor();
 
       String input = in.nextLine();
 
       //clear the text that was written
+      clear();
 
       return input;
   }
@@ -373,9 +375,12 @@ public class Game{
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 
+
+
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
+      TextBox(27, 2, 80, 1, preprompt);
 
       //example debug statment
       party.get(0).setSleepStatus(true);
@@ -416,8 +421,8 @@ public class Game{
             TextBox(8,2,38,30,party.get(whichPlayer).attack(enemies.get(2)));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-        }else {
-          if(input.startsWith("special ") || input.startsWith("sp" )){
+        }
+        else if(input.startsWith("special ") || input.startsWith("sp" )){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
@@ -430,7 +435,7 @@ public class Game{
               TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(enemies.get(2)));
             }
           }
-        }else {
+          else{
             if (input.endsWith("1")){
               TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(party.get(0)));
             }
@@ -471,9 +476,6 @@ public class Game{
               /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
               TextBox(8,2,38,30,party.get(whichPlayer).support());
             }
-              /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-            }
-            whichPlayer++;
           }
         }
       }
@@ -484,14 +486,47 @@ public class Game{
   }
 }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+        else if(input.startsWith("support1 ") || input.startsWith("su1 ")){
+          //"support 0" or "su 0" or "su 2" etc.
+          //assume the value that follows su  is an integer.
+          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+          if (partyType.equals("Fire") || partyType.equals("Grass")){
+            if (input.endsWith("1")){
+              party.get(whichPlayer).support(enemies.get(0));
+            }
+            if (input.endsWith("2")){
+              party.get(whichPlayer).support(enemies.get(1));
+            }
+            if (input.endsWith("3")){
+              party.get(whichPlayer).support(enemies.get(2));
+            }
+          }
+          else{
+            if (input.endsWith("1")){
+              party.get(whichPlayer).support(party.get(0));
+            }
 
-
-
-
+            if (input.endsWith("2")){
+              party.get(whichPlayer).support(party.get(1));
+            }
+            if (input.endsWith("3")){
+              party.get(whichPlayer).support(party.get(2));
+            }
+          }
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
+        else if(input.startsWith("support2 ") || input.startsWith("su2 ")){
+          //"support 0" or "su 0" or "su 2" etc.
+          //assume the value that follows su  is an integer.
+          /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+          party.get(whichPlayer).support();
+          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        }
 
         //You should decide when you want to re-ask for user input
         //If no errors:
-
+        whichPlayer++;
 
 
         if(whichPlayer < party.size()){

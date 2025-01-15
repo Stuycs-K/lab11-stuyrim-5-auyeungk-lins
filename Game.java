@@ -536,15 +536,11 @@ public class Game{
           if (rollAttack == 3){
             enemies.get(whichOpponent).support();
           }
-<<<<<<< HEAD
-          /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-=======
         }
         if (rollAttack == 3){
           enemies.get(whichOpponent).support(party.get(rollPerson));
         }
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
->>>>>>> bdf00705822beb0333f95ac15f11936f4a3a0185
 
 
           //Decide where to draw the following prompt:

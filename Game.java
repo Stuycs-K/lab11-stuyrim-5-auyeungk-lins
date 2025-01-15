@@ -311,7 +311,7 @@ public class Game{
 
     //draw enemy party
 
-  }
+
 
   public static String userInput(Scanner in){
       //Move cursor to prompt location
@@ -398,7 +398,8 @@ public class Game{
 
       //display event based on last turn's input
       String partyType = party.get(whichPlayer).getType();
-      while(partyTurn && whichPlayer < 3){
+      if(partyTurn){
+      while(whichPlayer < 3){
         TextBox(28,2,78,30, preprompt);
         go(29,2);
         showCursor();
@@ -406,13 +407,13 @@ public class Game{
         if(input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (input.endsWith("1")){
-            party.get(whichPlayer).attack(enemies.get(0));
+            TextBox(8,2,38,30, party.get(whichPlayer).attack(enemies.get(0)));
           }
           if (input.endsWith("2")){
-            party.get(whichPlayer).attack(enemies.get(1));
+            TextBox(8,2,38,30,party.get(whichPlayer).attack(enemies.get(1)));
           }
           if (input.endsWith("3")){
-            party.get(whichPlayer).attack(enemies.get(2));
+            TextBox(8,2,38,30,party.get(whichPlayer).attack(enemies.get(2)));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }else {
@@ -420,66 +421,74 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
-              party.get(whichPlayer).specialAttack(enemies.get(0));
+              TextBox(8,2,38,30, party.get(whichPlayer).specialAttack(enemies.get(0)));
             }
             if (input.endsWith("2")){
-              party.get(whichPlayer).specialAttack(enemies.get(1));
+              TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(enemies.get(1)));
             }
             if (input.endsWith("3")){
-              party.get(whichPlayer).specialAttack(enemies.get(2));
+              TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(enemies.get(2)));
             }
           }
         }else {
             if (input.endsWith("1")){
-              party.get(whichPlayer).specialAttack(party.get(0));
+              TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(party.get(0)));
             }
             if (input.endsWith("2")){
-              party.get(whichPlayer).specialAttack(party.get(1));
+              TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(party.get(1)));
             }
             if (input.endsWith("3")){
-              party.get(whichPlayer).specialAttack(party.get(2));
+              TextBox(8,2,38,30,party.get(whichPlayer).specialAttack(party.get(2)));
             }else {
+
               if(input.startsWith("support1 ") || input.startsWith("su1 ")){
               //"support 0" or "su 0" or "su 2" etc.
               //assume the value that follows su  is an integer.
               /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
               if (partyType.equals("Fire") || partyType.equals("Grass")){
                 if (input.endsWith("1")){
-                  party.get(whichPlayer).support(enemies.get(0));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(enemies.get(0)));
                 }
                 if (input.endsWith("2")){
-                  party.get(whichPlayer).support(enemies.get(1));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(enemies.get(1)));
                 }
                 if (input.endsWith("3")){
-                  party.get(whichPlayer).support(enemies.get(2));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(enemies.get(2)));
                 }
               }else {
                 if (input.endsWith("1")){
-                  party.get(whichPlayer).support(party.get(0));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(party.get(0)));
                 }
                 if (input.endsWith("2")){
-                  party.get(whichPlayer).support(party.get(1));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(party.get(1)));
                 }
                 if (input.endsWith("3")){
-                  party.get(whichPlayer).support(party.get(2));
+                  TextBox(8,2,38,30,party.get(whichPlayer).support(party.get(2)));
                 }else {
                   if(input.startsWith("support2 ") || input.startsWith("su2 ")){
               //"support 0" or "su 0" or "su 2" etc.
               //assume the value that follows su  is an integer.
               /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-              party.get(whichPlayer).support();
+              TextBox(8,2,38,30,party.get(whichPlayer).support());
             }
               /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
             }
             whichPlayer++;
           }
         }
+      }
+    }
+  }
+  if (whichPlayer == 3) {
+    partyTurn = false;
+  }
+}
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
 
 
-      partyTurn = false;
+
         //You should decide when you want to re-ask for user input
         //If no errors:
 
@@ -499,8 +508,9 @@ public class Game{
           partyTurn = false;
           whichOpponent = 0;
         }
+
         //done with one party member
-      }else{
+
         //not the party turn!
 
 

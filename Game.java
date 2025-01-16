@@ -156,6 +156,7 @@ public class Game{
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
         if(textIndex != textLength){
+          if(i text.charAt(i+1))
 				drawText(Character.toString(text.charAt(textIndex)), i, j+1);
 				textIndex++;
       }
@@ -197,7 +198,8 @@ public class Game{
         TextBox(startRow,30,20,78, party.get(0).toString() + " - " + party.get(0).getType());
         TextBox(startRow+1,30,20,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
         TextBox(startRow+2,30,20,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
-        if(party.get(0).getPoisonStatus() == true){
+        if(party.get(0).getPoisonStatus() == true){				String partyType = party.get(whichPlayer).getType();
+
           status+="PSN ";
         }
         if(party.get(0).getSleepStatus() == true){
@@ -298,7 +300,8 @@ public class Game{
     // under 25% : red
     if((double)(hp/maxHP) < 0.25) {
     	colorize(output, RED);
-    }
+    }				String partyType = party.get(whichPlayer).getType();
+
     // under 75% : yellow
     if((double)(hp/maxHP) < 0.75) {
     	colorize(output, YELLOW);
@@ -615,7 +618,7 @@ public class Game{
           /*else {
             enemies.get(whichOpponent).support(party.get(rollPerson));
           }*/
-        
+
 
 
 					whichOpponent++;

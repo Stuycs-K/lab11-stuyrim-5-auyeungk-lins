@@ -55,6 +55,15 @@ public class Game{
 	public static void clearScreen(){
 		System.out.println("\033[2J");
 	}
+	
+	//erase (black background)
+	public static void erase(int r, int c, int size){
+	  go(r,c);
+	  System.out.print("\033[0m");
+	  for(int i = 0; i < size;i++){
+	    System.out.print(" ");
+	  }
+	}
 
   /*Overloaded Colorize methods.
   c1,c2 and c3 are any color modifiers such as bold/color/background color etc.
@@ -311,8 +320,12 @@ public class Game{
 		//TextBox(2, 4, 10, 10, "This is a very very long text!");
 
     //draw player party
+    
 
     //draw enemy party
+		
+		
+		go(28,3);
 
   }
 
@@ -326,7 +339,8 @@ public class Game{
       String input = in.nextLine();
 
       //clear the text that was written
-      clear();
+      erase(27, 3, 60);
+			erase(28, 3, 60);
 
       return input;
   }
@@ -373,18 +387,20 @@ public class Game{
 
     //You can add parameters to draw screen!
     drawScreen();//initial state.
+		drawParty(enemies, 3);
+		drawParty(party, 21);
 
     //Main loop
 
     //display this prompt at the start of the game.
     String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
+		TextBox(27, 2, 80, 1, preprompt);
 
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
       input = userInput(in);
-      TextBox(27, 2, 80, 1, preprompt);
+      
       TextBox(29, 2, 80, 1, "Turn: " + whichPlayer + whichOpponent);
 
       //example debug statment
@@ -400,15 +416,15 @@ public class Game{
       party.get(1).applyDamage(1);
       party.get(2).applyDamage(10);*/
 
+			
 
-
-      drawParty(enemies, 3);
-      drawParty(party, 21);
+      
       //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
-      String partyType = party.get(whichPlayer).getType();
+      
       if(partyTurn){
+				String partyType = party.get(whichPlayer).getType();
 
         //Process user input for the last Adventurer:
         if(input.startsWith("attack ") || input.startsWith("a ")){
@@ -488,9 +504,6 @@ public class Game{
         if(input.equals("quit")) {
       	  quit();
         }
-
-        //You should decide when you want to re-ask for user input
-        //If no errors:
         whichPlayer++;
 
 
@@ -498,12 +511,13 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-
+					TextBox(27, 2, 80, 1, prompt);
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
+					TextBox(27, 2, 80, 1, prompt);
 
           partyTurn = false;
           whichOpponent = 0;
@@ -519,6 +533,9 @@ public class Game{
         if (!partyTurn){
           int rollPerson = (int)(Math.random()*3);
           int rollAttack = (int)(Math.random()*4);
+					if (whichOpponent < enemies.size()){
+						whichOpponent++;
+					}
           String enemyType = enemies.get(whichOpponent).getType();
           if (rollAttack == 0){
             enemies.get(whichOpponent).attack(party.get(rollPerson));
@@ -543,53 +560,10 @@ public class Game{
             enemies.get(whichOpponent).support();
           }else {
             enemies.get(whichOpponent).support(party.get(rollPerson));
-          }
-          }
-        
-        /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
-
-
-          //Decide where to draw the following prompt:
-          String prompt = "press enter to see next turn";
-
-          whichOpponent++;
-
-        }//end of one enemy.
-        }
-
-
-      //modify this if statement.
-      if(!partyTurn && whichOpponent >= enemies.size()){
-        //THIS BLOCK IS TO END THE ENEMY TURN
-        //It only triggers after the last enemy goes.
-        whichPlayer = 0;
-        turn++;
-        partyTurn=true;
-        //display this prompt before player's turn
-        String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-      }
-
-      //display the updated screen after input has been processed.
-      drawScreen();
-
-<<<<<<< HEAD
-			
-    }//end of main game loop
-		
-		
-    //After quit reset things:
+					}
+					
+				}
+			}
+		}
 	}
-	
-	clearScreen();
-  quit();
-}
-=======
-      
-  }//end of main game loop
-
-
-    //After quit reset things:
-   
-  
->>>>>>> cfc5b941912d70b4dc94728ecc1ad05d80b4d8a8
 }

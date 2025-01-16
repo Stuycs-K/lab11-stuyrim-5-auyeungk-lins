@@ -539,11 +539,8 @@ public class Game{
       	  quit();
         }
 				whichPlayer++;
-<<<<<<< HEAD
-=======
 
 
->>>>>>> f532a725129e98e5811a65b27f513fd9d26b600f
 
         if(whichPlayer < party.size()){
           //This is a player turn.
@@ -574,15 +571,8 @@ public class Game{
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-<<<<<<< HEAD
       if (!partyTurn){
         if (input.equals("")){
-=======
-        if (!partyTurn && wait){
-          if (input.equals("")){
-
-          }
->>>>>>> f532a725129e98e5811a65b27f513fd9d26b600f
           int rollPerson = (int)(Math.random()*3);
           int rollAttack = (int)(Math.random()*4);
           String enemyType = enemies.get(whichOpponent).getType();
@@ -609,7 +599,6 @@ public class Game{
           if (rollAttack == 3){
             enemies.get(whichOpponent).support();
           }
-<<<<<<< HEAD
           whichOpponent++;
 
           if(whichOpponent < enemies.size()){
@@ -626,13 +615,9 @@ public class Game{
           /*else {
             enemies.get(whichOpponent).support(party.get(rollPerson));
           }*/
-        }
-      }
+        
 
 
-
-
-=======
 					whichOpponent++;
 
 					if(whichOpponent < enemies.size()){
@@ -652,9 +637,8 @@ public class Game{
 
 
 				}
+      }
 
-			}
->>>>>>> f532a725129e98e5811a65b27f513fd9d26b600f
 		}
 	}
 }

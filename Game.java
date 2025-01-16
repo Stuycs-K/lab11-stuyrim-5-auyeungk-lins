@@ -378,6 +378,7 @@ public class Game{
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
     boolean partyTurn = true;
+		boolean wait = false;
     int whichPlayer = 0;
     int whichOpponent = 0;
     int turn = 0;
@@ -399,9 +400,11 @@ public class Game{
 
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
       //Read user input
+			drawParty(enemies, 3);
+			drawParty(party, 21);
       input = userInput(in);
       
-      TextBox(29, 2, 80, 1, "Turn: " + whichPlayer + whichOpponent);
+      TextBox(29, 2, 80, 1, "Turn: " + (whichPlayer) + (whichOpponent) + partyTurn);
 
       //example debug statment
       /*party.get(0).setSleepStatus(true);
@@ -504,12 +507,14 @@ public class Game{
         if(input.equals("quit")) {
       	  quit();
         }
-        whichPlayer++;
+				whichPlayer++;
+        
 
 
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
+					
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 					TextBox(27, 2, 80, 1, prompt);
 
@@ -518,10 +523,15 @@ public class Game{
           //Decide where to draw the following prompt:
           String prompt = "press enter to see monster's turn";
 					TextBox(27, 2, 80, 1, prompt);
-
+					
           partyTurn = false;
-          whichOpponent = 0;
+					whichOpponent = 0;
+					whichPlayer = 0;
+					
         }
+				if (input.equals("")){
+					wait = true;
+				}
         //done with one party member
 
         //not the party turn!
@@ -530,13 +540,14 @@ public class Game{
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        if (!partyTurn){
+        if (!partyTurn && wait){
+          if (input.equals("")){
+          	
+          }
           int rollPerson = (int)(Math.random()*3);
           int rollAttack = (int)(Math.random()*4);
-					if (whichOpponent < enemies.size()){
-						whichOpponent++;
-					}
           String enemyType = enemies.get(whichOpponent).getType();
+					
           if (rollAttack == 0){
             enemies.get(whichOpponent).attack(party.get(rollPerson));
           }
@@ -558,11 +569,27 @@ public class Game{
           }
           if (rollAttack == 3){
             enemies.get(whichOpponent).support();
-          }else {
-            enemies.get(whichOpponent).support(party.get(rollPerson));
+          }
+					whichOpponent++;
+					
+					if(whichOpponent < enemies.size()){
+	          String prompt = "Press enter to see monster's turn";
+						TextBox(27, 2, 80, 1, prompt);
 					}
+					else{
+						partyTurn = true;
+						whichPlayer = 0;
+						
+	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+						TextBox(27, 2, 80, 1, prompt);
+					}
+					/*else {
+            enemies.get(whichOpponent).support(party.get(rollPerson));
+					}*/
+					
 					
 				}
+				
 			}
 		}
 	}

@@ -615,7 +615,7 @@ public class Game{
           /*else {
             enemies.get(whichOpponent).support(party.get(rollPerson));
           }*/
-        
+
 
 
 					whichOpponent++;

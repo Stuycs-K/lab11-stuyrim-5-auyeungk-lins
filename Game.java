@@ -485,6 +485,9 @@ public class Game{
           party.get(whichPlayer).support();
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
+        if(input.equals("quit")) {
+      	  quit();
+        }
 
         //You should decide when you want to re-ask for user input
         //If no errors:
@@ -538,11 +541,11 @@ public class Game{
           }
           if (rollAttack == 3){
             enemies.get(whichOpponent).support();
+          }else {
+            enemies.get(whichOpponent).support(party.get(rollPerson));
           }
-        }
-        if (rollAttack == 3){
-          enemies.get(whichOpponent).support(party.get(rollPerson));
-        }
+          }
+        
         /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 
 
@@ -569,6 +572,7 @@ public class Game{
       //display the updated screen after input has been processed.
       drawScreen();
 
+<<<<<<< HEAD
 			
     }//end of main game loop
 		
@@ -579,4 +583,13 @@ public class Game{
 	clearScreen();
   quit();
 }
+=======
+      
+  }//end of main game loop
+
+
+    //After quit reset things:
+   
+  
+>>>>>>> cfc5b941912d70b4dc94728ecc1ad05d80b4d8a8
 }

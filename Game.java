@@ -51,6 +51,10 @@ public class Game{
   public static void clear(){
     System.out.print("\u001b[2J");
   }
+	
+	public static void clearScreen(){
+		System.out.println("\033[2J");
+	}
 
   /*Overloaded Colorize methods.
   c1,c2 and c3 are any color modifiers such as bold/color/background color etc.
@@ -465,7 +469,6 @@ public class Game{
             if (input.endsWith("1")){
               party.get(whichPlayer).support(party.get(0));
             }
-
             if (input.endsWith("2")){
               party.get(whichPlayer).support(party.get(1));
             }
@@ -566,11 +569,14 @@ public class Game{
       //display the updated screen after input has been processed.
       drawScreen();
 
-
+			
     }//end of main game loop
-
-
+		
+		
     //After quit reset things:
-    quit();
-  }
+	}
+	
+	clearScreen();
+  quit();
+}
 }

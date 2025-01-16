@@ -51,11 +51,11 @@ public class Game{
   public static void clear(){
     System.out.print("\u001b[2J");
   }
-	
+
 	public static void clearScreen(){
 		System.out.println("\033[2J");
 	}
-	
+
 	//erase (black background)
 	public static void erase(int r, int c, int size){
 	  go(r,c);
@@ -320,11 +320,11 @@ public class Game{
 		//TextBox(2, 4, 10, 10, "This is a very very long text!");
 
     //draw player party
-    
+
 
     //draw enemy party
-		
-		
+
+
 		go(28,3);
 
   }
@@ -403,7 +403,7 @@ public class Game{
 			drawParty(enemies, 3);
 			drawParty(party, 21);
       input = userInput(in);
-      
+
       TextBox(29, 2, 80, 1, "Turn: " + (whichPlayer) + (whichOpponent) + partyTurn);
 
       //example debug statment
@@ -419,13 +419,13 @@ public class Game{
       party.get(1).applyDamage(1);
       party.get(2).applyDamage(10);*/
 
-			
 
-      
+
+
       //TextBox(2,2,28,78,"input: "+input+" partyTurn:"+partyTurn+ " whichPlayer="+whichPlayer+ " whichOpp="+whichOpponent );
 
       //display event based on last turn's input
-      
+
       if(partyTurn){
 				String partyType = party.get(whichPlayer).getType();
 
@@ -508,46 +508,42 @@ public class Game{
       	  quit();
         }
 				whichPlayer++;
-        
-
 
         if(whichPlayer < party.size()){
           //This is a player turn.
           //Decide where to draw the following prompt:
-					
+
           String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 					TextBox(27, 2, 80, 1, prompt);
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
-          String prompt = "press enter to see monster's turn";
+          String prompt = "Press enter to see monster's turn";
 					TextBox(27, 2, 80, 1, prompt);
-					
+
           partyTurn = false;
 					whichOpponent = 0;
 					whichPlayer = 0;
-					
+
         }
 				if (input.equals("")){
 					wait = true;
 				}
         //done with one party member
-
+      }
         //not the party turn!
 
 
         //enemy attacks a randomly chosen person with a randomly chosen attack.z`
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-        if (!partyTurn && wait){
-          if (input.equals("")){
-          	
-          }
+      if (!partyTurn){
+        if (input.equals("")){
           int rollPerson = (int)(Math.random()*3);
           int rollAttack = (int)(Math.random()*4);
           String enemyType = enemies.get(whichOpponent).getType();
-					
+
           if (rollAttack == 0){
             enemies.get(whichOpponent).attack(party.get(rollPerson));
           }
@@ -570,27 +566,28 @@ public class Game{
           if (rollAttack == 3){
             enemies.get(whichOpponent).support();
           }
-					whichOpponent++;
-					
-					if(whichOpponent < enemies.size()){
-	          String prompt = "Press enter to see monster's turn";
-						TextBox(27, 2, 80, 1, prompt);
-					}
-					else{
-						partyTurn = true;
-						whichPlayer = 0;
-						
-	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-						TextBox(27, 2, 80, 1, prompt);
-					}
-					/*else {
+          whichOpponent++;
+
+          if(whichOpponent < enemies.size()){
+            String prompt = "Press enter to see monster's turn";
+            TextBox(27, 2, 80, 1, prompt);
+          }
+          else{
+            partyTurn = true;
+            whichPlayer = 0;
+
+            String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+            TextBox(27, 2, 80, 1, prompt);
+          }
+          /*else {
             enemies.get(whichOpponent).support(party.get(rollPerson));
-					}*/
-					
-					
-				}
-				
-			}
+          }*/
+        }
+      }
+
+
+
+
 		}
 	}
 }

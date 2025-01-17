@@ -1,5 +1,6 @@
 public class Charizard extends Adventurer{
-	private int ppCount, ppMax, swordsDance; 
+	private int ppCount, ppMax, swordsDance;
+	private boolean isFriend;
 	public Charizard(){
 		super("Charizard", 25, "Fire");
 		this.ppCount = 40;
@@ -30,15 +31,15 @@ public class Charizard extends Adventurer{
 	public void setSpecial(int n) {
 		ppCount = n;
 	}
-	
+
 	public void setSD(int n) {
 		this.swordsDance = n;
 	}
-	
+
 	public int getSD() {
 		return swordsDance;
 	}
-	
+
 	public String attack(Adventurer other) {
 		// ember
 		int baseDmg = 2;
@@ -114,16 +115,16 @@ public class Charizard extends Adventurer{
 			 }
 			if (other.getType().equals("Grass")){
 			      other.applyDamage(baseDmg * 2);
-			      
+
 			      return this.toString() + " used Flamethrower! It's super effective! It did "+ baseDmg*2+ " dmg!";
 			    }
 			    if (other.getType().equals("Water")){
 			      other.applyDamage(baseDmg/2);
-			      
+
 			      return this.toString() + " used Flamethrower! It's not very effective... It did " + baseDmg/2 + " dmg...";
 			    }
 					other.applyDamage(baseDmg);
-					
+
 					return this.toString() + " used Flamethrower! It did " + baseDmg + " dmg!";
 		}else {
 			return "Not enough PP!";
@@ -185,5 +186,5 @@ public class Charizard extends Adventurer{
 			return "Not enough PP!";
 		}
 	}
-	
+
 }

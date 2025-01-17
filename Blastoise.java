@@ -1,5 +1,6 @@
 public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
+  private boolean isFriend;
 
   public Blastoise(){
 		super("Blastoise", 40, "Water");
@@ -29,6 +30,10 @@ public class Blastoise extends Adventurer{
   public void setSpecial(int n) {
 		ppCount = n;
 	}
+
+  public void setFriendFoe(boolean yesNo){
+    isFriend = yesNo;
+  }
 
   public String attack(Adventurer other) {
 	  int baseDmg = 2;

@@ -1,5 +1,6 @@
 public class Venusaur extends Adventurer{
 	private int ppCount, ppMax;
+	private boolean isFriend;
 
 
 	public Venusaur(){
@@ -33,7 +34,7 @@ public class Venusaur extends Adventurer{
 
 	public String attack(Adventurer other) {
 		// vine whip
-		int baseDmg = 2; 
+		int baseDmg = 2;
 		int sleep = (int)(Math.random() * 101);
 		if(this.getSleepStatus() == true && sleep < 75){
 			return this.toString() + " is asleep!";
@@ -83,7 +84,7 @@ public class Venusaur extends Adventurer{
 		else{
 			return "Not enough PP!";
 		}
-		
+
 	}
 
 	public String support() {
@@ -105,7 +106,7 @@ public class Venusaur extends Adventurer{
 		else{
 			return "Not enough PP!";
 		}
-		
+
 	}
 
 	public String specialAttack(Adventurer other) {
@@ -133,22 +134,22 @@ public class Venusaur extends Adventurer{
 			 }
 			if (other.getType().equals("Water")){
 			      other.applyDamage(baseDmg * 2);
-			      
+
 			      return this.toString() + " used Sludge Bomb! It's super effective! It did "+ baseDmg*2+ " dmg!";
 			    }
 			    if (other.getType().equals("Fire")){
 			      other.applyDamage(baseDmg/2);
-			      
+
 			      return this.toString() + " used Sludge Bomb! It's not very effective... It did " + baseDmg/2 + " dmg...";
 			    }
 					other.applyDamage(baseDmg);
-					
+
 					return this.toString() + " used Sludge Bomb! It did " + baseDmg + " dmg!";
 		}
 		else{
 			return "Not enough PP!";
 		}
-		
+
 	}
 
 }

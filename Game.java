@@ -643,7 +643,6 @@ public class Game{
             enemies.get(whichOpponent).support(party.get(rollPerson));
 					}*/
 
-
 				}
       }
 

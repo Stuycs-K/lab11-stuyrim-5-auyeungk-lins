@@ -1,4 +1,4 @@
-import java.util.*;
+Gamimport java.util.*;
 public class Game{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
@@ -156,10 +156,11 @@ public class Game{
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
         if(textIndex != textLength){
-          if(i text.charAt(i+1))
-				drawText(Character.toString(text.charAt(textIndex)), i, j+1);
-				textIndex++;
-      }
+          if(i text.charAt(i+1)){
+						drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+						textIndex++;
+					}
+				}
 			}
 		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/

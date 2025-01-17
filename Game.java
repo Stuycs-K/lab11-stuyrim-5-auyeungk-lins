@@ -156,7 +156,7 @@ public class Game{
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
         if(textIndex != textLength){
-          if(j == width+col - 2 && text.charAt(textIndex+1) != ' '){
+          if(j == width+col - 2 && text.charAt(textIndex+1) != ' ' && text.charAt(textIndex) != ' '){
               drawText(Character.toString(text.charAt(textIndex)), i, j+1);
               drawText(Character.toString('-'), i, j+2);
               j++;

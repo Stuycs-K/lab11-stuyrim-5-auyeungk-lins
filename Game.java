@@ -155,16 +155,16 @@ public class Game{
 		int textLength = text.length();
 		for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
-        if(j == width+col - 2 && text.charAt(j+1) != ' '){
-            drawText(Character.toString(text.charAt(textIndex)), i, j+1);
-            drawText(Character.toString('-'), i, j+2);
-            j++;
-            textIndex++;
-        }else {
-          if(textIndex != textLength){
+        if(textIndex != textLength){
+          if(j == width+col - 2 && text.charAt(textIndex+1) != ' '){
+              drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+              drawText(Character.toString('-'), i, j+2);
+              j++;
+              textIndex++;
+            }else {
   						drawText(Character.toString(text.charAt(textIndex)), i, j+1);
   						textIndex++;
-  				}
+            }
         }
 			}
 		}
@@ -305,7 +305,7 @@ public class Game{
     // under 25% : red
     if((double)(hp/maxHP) < 0.25) {
     	colorize(output, RED);
-    }				
+    }
 
     // under 75% : yellow
     if((double)(hp/maxHP) < 0.75) {
@@ -586,26 +586,26 @@ public class Game{
           String enemyType = enemies.get(whichOpponent).getType();
 
           if (rollAttack == 0){
-            enemies.get(whichOpponent).attack(party.get(rollPerson));
+            TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).attack(party.get(rollPerson)));
           }
           if (rollAttack == 1){
             if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-              enemies.get(whichOpponent).specialAttack(party.get(rollPerson));
+              TextBox(9, 41, 37, 20, "Enemy " +enemies.get(whichOpponent).specialAttack(party.get(rollPerson)));
             }
             else{
-              enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson));
+              TextBox(9, 41, 37, 20, "Enemy " +enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson)));
             }
           }
           if (rollAttack == 2){
             if (enemyType.equals("Fire") || enemyType.equals("Grass")){
-              enemies.get(whichOpponent).support(party.get(rollPerson));
+              TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support(party.get(rollPerson)));
             }
             else{
-              enemies.get(whichOpponent).support(enemies.get(rollPerson));
+              TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support(enemies.get(rollPerson)));
             }
           }
           if (rollAttack == 3){
-            enemies.get(whichOpponent).support();
+            TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support());
           }
           whichOpponent++;
 

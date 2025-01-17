@@ -204,8 +204,7 @@ public class Game{
         TextBox(startRow,30,20,78, party.get(0).toString() + " - " + party.get(0).getType());
         TextBox(startRow+1,30,20,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
         TextBox(startRow+2,30,20,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
-        if(party.get(0).getPoisonStatus() == true){				String partyType = party.get(whichPlayer).getType();
-
+        if(party.get(0).getPoisonStatus() == true){
           status+="PSN ";
         }
         if(party.get(0).getSleepStatus() == true){
@@ -306,7 +305,7 @@ public class Game{
     // under 25% : red
     if((double)(hp/maxHP) < 0.25) {
     	colorize(output, RED);
-    }				String partyType = party.get(whichPlayer).getType();
+    }				
 
     // under 75% : yellow
     if((double)(hp/maxHP) < 0.75) {

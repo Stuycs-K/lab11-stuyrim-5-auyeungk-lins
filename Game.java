@@ -131,7 +131,7 @@ public class Game{
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     go(startRow, startCol);
-		System.out.println(s);
+		System.out.println(colorize(s));
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -232,6 +232,7 @@ public class Game{
     	String status = "";
       if(party.size() == 1){
         TextBox(startRow,30,20,78, party.get(0).toString() + " - " + party.get(0).getType());
+        erase(startRow+1, 2, 78);erase(startRow+2, 2, 78);
         TextBox(startRow+1,30,20,78, "HP: ");
         TextBox(startRow+1,34,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
         TextBox(startRow+2,30,20,78, "PP: ");
@@ -250,6 +251,8 @@ public class Game{
       }
       if(party.size() == 2){
         TextBox(startRow,15,20,78, party.get(0).toString() + " - " + party.get(0).getType());
+        erase(startRow+1, 2, 78);
+        erase(startRow+2, 2, 78);
         TextBox(startRow+1,15,20,78, "HP: ");
         TextBox(startRow+1,19,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
         TextBox(startRow+2,15,20,78, "PP: ");
@@ -285,6 +288,8 @@ public class Game{
       }
       if(party.size() == 3){
         TextBox(startRow,2,20,78, party.get(0).toString() + " - " + party.get(0).getType());
+        erase(startRow+1, 2, 78);
+        erase(startRow+2, 2, 78);
         TextBox(startRow+1,2,20,78, "HP: ");
         TextBox(startRow+1,6,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
         TextBox(startRow+2,2,20,78, "PP: ");
@@ -343,16 +348,16 @@ public class Game{
 
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
-    String output = hp+"/"+maxHP+"";
+    String output = hp+"/"+maxHP;
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     if((double)(hp/maxHP) < 0.25) {
-    	return colorize(output, RED);
+    	colorize(output, RED);
     }
 
     // under 75% : yellow
     if((double)(hp/maxHP) < 0.75) {
-    	return colorize(output, YELLOW);
+    	colorize(output, YELLOW);
     }
     // otherwise : white
     return output;
@@ -671,8 +676,8 @@ public class Game{
         //Enemy action choices go here!
         /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
       if (!partyTurn){
-        if (input.equals("")){
-          int rollPerson = (int)(Math.random()*3);
+        if (input.equals("") && whichOpponent < enemies.size()){
+          int rollPerson = (int)(Math.random()*enemies.size());
           int rollAttack = (int)(Math.random()*4);
           String enemyType = enemies.get(whichOpponent).getType();
 

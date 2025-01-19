@@ -135,7 +135,7 @@ public class Game{
   public static void drawText(String s,int startRow, int startCol){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
     go(startRow, startCol);
-		System.out.println(colorize(s));
+		System.out.println(s);
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -151,21 +151,53 @@ public class Game{
   */
   public static void TextBox(int row, int col, int width, int height, String text){
     /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-		int textIndex = 0;
+	  /*
+	  if(text.length() != 0) {
+		  Scanner in = new Scanner(text);
+		  String word = in.next();
+		  String line = "";
+			int textSize = col + width;
+			int textLine = row;
+			while(in.hasNext()) {
+				if(line.length() + word.length() <= width) {
+					line+=word;
+					word = in.next();
+				}else {
+					drawText(line, textLine, col);
+					line = "";
+					textLine++;
+				}
+			}
+	  }
+		*/
+		int textIndex =0;
 		int textLength = text.length();
-		for (int i = row; i < height+row && textIndex < textLength; i++){
+		 for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
-        if(textIndex != textLength){
-          if(j == width+col - 2 && text.charAt(textIndex+1) != ' ' && text.charAt(textIndex) != ' '){
-              drawText(Character.toString(text.charAt(textIndex)), i, j+1);
-              drawText(Character.toString('-'), i, j+2);
-              j++;
-              textIndex++;
-            }else {
-  						drawText(Character.toString(text.charAt(textIndex)), i, j+1);
-  						textIndex++;
-            }
-        }
+		        if(textIndex < textLength){
+		        	if(textIndex == textLength-2) {
+			          if(j == width+col - 2 && text.charAt(textIndex) != ' ' && text.charAt(textIndex+1) != ' '){
+			              drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+			              drawText(Character.toString('-'), i, j+2);
+			              j++;
+			              textIndex++;
+			            }else {
+			  						drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+			  						textIndex++;
+			            }
+			        }else {
+			        	if(j == width+col - 2 && text.charAt(textIndex) != ' ' && text.charAt(textIndex+1) != ' '){
+				              drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+				              drawText(Character.toString('-'), i, j+2);
+				              j++;
+				              textIndex++;
+				            }else {
+				  						drawText(Character.toString(text.charAt(textIndex)), i, j+1);
+				  						textIndex++;
+				            }
+			        	
+			        }
+	        	}
 			}
 		}
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -352,6 +384,17 @@ public class Game{
 
       return input;
   }
+  
+  public static void setRelations(Adventurer main, ArrayList<Adventurer> enemy, ArrayList<Adventurer> friend) {
+	  for(int i = 0; i < enemy.size(); i++) {
+		  main.addFoe(enemy.get(i));
+		  
+	  }
+	  for(int i = 0; i < friend.size(); i++) {
+		  
+		  main.addFriend((friend.get(i)));
+	  }
+  }
 
   public static void quit(){
     Text.reset();
@@ -384,6 +427,13 @@ public class Game{
 		party.add(createRandomAdventurer());
 		party.add(createRandomAdventurer());
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+		
+		for(int i = 0; i < enemies.size(); i++) {
+			setRelations(enemies.get(i), party, enemies);
+		}
+		for(int i = 0; i < party.size(); i++) {
+			setRelations(party.get(i), enemies, party);
+		}
 
     boolean partyTurn = true;
 		boolean wait = false;

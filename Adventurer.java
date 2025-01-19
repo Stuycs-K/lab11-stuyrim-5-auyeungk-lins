@@ -91,6 +91,8 @@ public abstract class Adventurer{
 		this.burnStatus = false;
 		this.HHStatus = false;
     this.type = type;
+    this.friends = new ArrayList<Adventurer>();
+    this.foes = new ArrayList<Adventurer>();
   }
   //friends and foes methods
   public void addFriend(Adventurer other) {

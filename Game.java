@@ -52,10 +52,6 @@ public class Game{
     System.out.print("\u001b[2J");
   }
 
-	public static void clearScreen(){
-		System.out.println("\033[2J");
-	}
-
 	//erase (black background)
 	public static void erase(int r, int c, int size){
 	  go(r,c);
@@ -454,7 +450,7 @@ public class Game{
     //Main loop
 
     //display this prompt at the start of the game.
-    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+    String preprompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support1/support2/quit";
 		TextBox(27, 2, 80, 1, preprompt);
 
 
@@ -495,15 +491,19 @@ public class Game{
           if (input.endsWith("1")){
             erase(9,2, 40);
             erase(10,2,40);
+						erase(11,2,40);
             TextBox(9, 2, 37, 20, party.get(whichPlayer).attack(enemies.get(0)));
           }
           if (input.endsWith("2")){
             erase(9,2, 40);
+            erase(10,2,40);
+						erase(11,2,40);
             TextBox(9, 2, 37, 20,party.get(whichPlayer).attack(enemies.get(1)));
           }
           if (input.endsWith("3")){
             erase(9,2, 40);
             erase(10,2,40);
+						erase(11,2,40);
             TextBox(9, 2, 37, 20,party.get(whichPlayer).attack(enemies.get(2)));
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
@@ -512,35 +512,41 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).specialAttack(enemies.get(0)));
             }
             if (input.endsWith("2")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).specialAttack(enemies.get(1)));
             }
             if (input.endsWith("3")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).specialAttack(enemies.get(2)));
             }
           }
           else{
             if (input.endsWith("1")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).specialAttack(party.get(0)));
             }
             if (input.endsWith("2")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).specialAttack(party.get(1)));
             }
             if (input.endsWith("3")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20,party.get(whichPlayer).specialAttack(party.get(2)));
             }
           }
@@ -552,46 +558,53 @@ public class Game{
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(enemies.get(0)));
             }
             if (input.endsWith("2")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(enemies.get(1)));
             }
             if (input.endsWith("3")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(enemies.get(2)));
             }
           }
           else{
             if (input.endsWith("1")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(party.get(0)));
             }
             if (input.endsWith("2")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(party.get(1)));
             }
             if (input.endsWith("3")){
-              erase(9,2, 40);
-              erase(10,2,40);
+	            erase(9,2, 40);
+	            erase(10,2,40);
+							erase(11,2,40);
               TextBox(9, 2, 37, 20, party.get(whichPlayer).support(party.get(2)));
             }
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("support2 ") || input.startsWith("su2 ")){
+        else if(input.equals("support2") || input.startsWith("su2")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           erase(9,2, 40);
           erase(10,2,40);
+					erase(11,2,40);
           TextBox(9, 2, 37, 20, party.get(whichPlayer).support());
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
@@ -606,12 +619,13 @@ public class Game{
           //This is a player turn.
           //Decide where to draw the following prompt:
 
-          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support1/support2/quit";
 					TextBox(27, 2, 80, 1, prompt);
 
         }else{
           //This is after the player's turn, and allows the user to see the enemy turn
           //Decide where to draw the following prompt:
+					erase(27,2, 70);
           String prompt = "Press enter to see monster's turn";
 					TextBox(27, 2, 80, 1, prompt);
 
@@ -638,46 +652,45 @@ public class Game{
           String enemyType = enemies.get(whichOpponent).getType();
 
           if (rollAttack == 0){
+	          erase(9, 41, 40);
+	          erase(10, 41, 40);
+						erase(11, 41, 40);
             TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).attack(party.get(rollPerson)));
           }
           if (rollAttack == 1){
+	          erase(9, 41, 40);
+	          erase(10, 41, 40);
+						erase(11, 41, 40);
             if (enemyType.equals("Fire") || enemyType.equals("Grass")){
               TextBox(9, 41, 37, 20, "Enemy " +enemies.get(whichOpponent).specialAttack(party.get(rollPerson)));
             }
             else{
+		          erase(9, 41, 40);
+		          erase(10, 41, 40);
+							erase(11, 41, 40);
               TextBox(9, 41, 37, 20, "Enemy " +enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson)));
             }
           }
           if (rollAttack == 2){
             if (enemyType.equals("Fire") || enemyType.equals("Grass")){
+		          erase(9, 41, 40);
+		          erase(10, 41, 40);
+							erase(11, 41, 40);
               TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support(party.get(rollPerson)));
             }
             else{
+		          erase(9, 41, 40);
+		          erase(10, 41, 40);
+							erase(11, 41, 40);
               TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support(enemies.get(rollPerson)));
             }
           }
           if (rollAttack == 3){
+	          erase(9, 41, 40);
+	          erase(10, 41, 40);
+						erase(11, 41, 40);
             TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support());
           }
-          whichOpponent++;
-
-          if(whichOpponent < enemies.size()){
-            String prompt = "Press enter to see monster's turn";
-            TextBox(27, 2, 80, 1, prompt);
-          }
-          else{
-            partyTurn = true;
-            whichPlayer = 0;
-
-            String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
-            TextBox(27, 2, 80, 1, prompt);
-          }
-          /*else {
-            enemies.get(whichOpponent).support(party.get(rollPerson));
-          }*/
-
-
-
 					whichOpponent++;
 
 					if(whichOpponent < enemies.size()){
@@ -692,14 +705,23 @@ public class Game{
 						for(int i = 0; i < enemies.size(); i++) {
 							 if (input.equals("")){
 								 if(enemies.get(i).getBurnStatus()) {
+			 	          erase(start, 41, 40);
+			 	          erase(start, 41, 40);
+			 						erase(start, 41, 40);
 									TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyBurn());
 									start+=2;
 								 }
 								 if(enemies.get(i).getPoisonStatus()) {
+ 			 	          erase(start, 41, 40);
+ 			 	          erase(start, 41, 40);
+ 			 						erase(start, 41, 40);
 									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyPoison());
 									 start+=2;
 								 }
 								 if(enemies.get(i).setSeededStatus()) {
+ 			 	          erase(start, 41, 40);
+ 			 	          erase(start, 41, 40);
+ 			 						erase(start, 41, 40);
 									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applySeed());
 									 start = 9;
 								 }
@@ -723,7 +745,7 @@ public class Game{
 							 }
 						}
 
-	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
+	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support1/support2/quit";
 						TextBox(27, 2, 80, 1, prompt);
 					}
 					/*else {

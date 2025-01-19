@@ -1,6 +1,5 @@
 public class Blastoise extends Adventurer{
   private int ppCount, ppMax;
-  private boolean isFriend;
 
   public Blastoise(){
 		super("Blastoise", 40, "Water");
@@ -30,10 +29,6 @@ public class Blastoise extends Adventurer{
   public void setSpecial(int n) {
 		ppCount = n;
 	}
-
-  public void setFriendFoe(boolean yesNo){
-    isFriend = yesNo;
-  }
 
   public String attack(Adventurer other) {
 	  int baseDmg = 2;
@@ -96,10 +91,16 @@ public class Blastoise extends Adventurer{
 		}
 		this.setSleepStatus(false);
 		if (getSpecial()-2 > 0){
-			for(int i = 0; i < 4; i++) {
+			for(int i = 0; i < 3; i++) {
 				if(Math.random() > 0.25) {
-					getFoe(i).setSleepStatus(true);
-					getFriend(i).setSleepStatus(true);
+					getFoe(i).setSleepStatus(false);
+					getFriend(i).setSleepStatus(false);
+					getFoe(i).setPoisonStatus(false);
+					getFriend(i).setPoisonStatus(false);
+					getFoe(i).setSeededStatus(false);
+					getFriend(i).setSeededStatus(false);
+					getFoe(i).setBurnStatus(false);
+					getFriend(i).setBurnStatus(false);
 				}
 			}
 			setSpecial(getSpecial() - 2);

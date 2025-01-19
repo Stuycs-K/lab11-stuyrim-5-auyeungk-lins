@@ -1,7 +1,5 @@
 public class Venusaur extends Adventurer{
 	private int ppCount, ppMax;
-	private boolean isFriend;
-
 
 	public Venusaur(){
 		super("Venusaur", 50, "Grass");

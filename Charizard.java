@@ -1,6 +1,6 @@
 public class Charizard extends Adventurer{
 	private int ppCount, ppMax, swordsDance;
-	private boolean isFriend;
+	
 	public Charizard(){
 		super("Charizard", 25, "Fire");
 		this.ppCount = 40;

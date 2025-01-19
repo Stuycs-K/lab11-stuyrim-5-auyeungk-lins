@@ -232,8 +232,10 @@ public class Game{
     	String status = "";
       if(party.size() == 1){
         TextBox(startRow,30,20,78, party.get(0).toString() + " - " + party.get(0).getType());
-        TextBox(startRow+1,30,20,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
-        TextBox(startRow+2,30,20,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        TextBox(startRow+1,30,20,78, "HP: ");
+        TextBox(startRow+1,34,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,30,20,78, "PP: ");
+        TextBox(startRow+2,34,20,78, colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
         if(party.get(0).getPoisonStatus() == true){
           status+="PSN ";
         }
@@ -244,11 +246,14 @@ public class Game{
           status+="BRN ";
         }
         TextBox(startRow+3,30,20,78, status);
+        status = "";
       }
       if(party.size() == 2){
         TextBox(startRow,15,20,78, party.get(0).toString() + " - " + party.get(0).getType());
-        TextBox(startRow+1,15,20,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
-        TextBox(startRow+2,15,20,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        TextBox(startRow+1,15,20,78, "HP: ");
+        TextBox(startRow+1,19,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,15,20,78, "PP: ");
+        TextBox(startRow+2,19,20,78, colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
         if(party.get(0).getPoisonStatus() == true){
           status +="PSN ";
         }
@@ -262,8 +267,10 @@ public class Game{
         status = "";
 
         TextBox(startRow,45,20,78, party.get(1).toString() + " - " + party.get(1).getType());
-        TextBox(startRow+1,45,20,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
-        TextBox(startRow+2,45,20,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
+        TextBox(startRow+1,45,20,78, "HP: ");
+        TextBox(startRow+1,49,20,78, colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,45,20,78, "PP: ");
+        TextBox(startRow+2,49,20,78,colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
         if(party.get(1).getPoisonStatus() == true){
           status +="PSN ";
         }
@@ -278,8 +285,10 @@ public class Game{
       }
       if(party.size() == 3){
         TextBox(startRow,2,20,78, party.get(0).toString() + " - " + party.get(0).getType());
-        TextBox(startRow+1,2,20,78, "HP: " + colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
-        TextBox(startRow+2,2,20,78, "PP: " + colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
+        TextBox(startRow+1,2,20,78, "HP: ");
+        TextBox(startRow+1,6,20,78, colorByPercent(party.get(0).getHP(), party.get(0).getmaxHP()));
+        TextBox(startRow+2,2,20,78, "PP: ");
+        TextBox(startRow+2,6,20,78, colorByPercent(party.get(0).getSpecial(), party.get(0).getSpecialMax()));
         if(party.get(0).getPoisonStatus() == true){
           status +="PSN ";
         }
@@ -293,8 +302,10 @@ public class Game{
         status = "";
 
         TextBox(startRow,28,20,78, party.get(1).toString() + " - " + party.get(1).getType());
-        TextBox(startRow+1,28,20,78, "HP: " + colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
-        TextBox(startRow+2,28,20,78, "PP: " + colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
+        TextBox(startRow+1,28,20,78, "HP: " );
+        TextBox(startRow+1,32,20,78, colorByPercent(party.get(1).getHP(), party.get(1).getmaxHP()));
+        TextBox(startRow+2,28,20,78, "PP: ");
+        TextBox(startRow+2,32,20,78, colorByPercent(party.get(1).getSpecial(), party.get(1).getSpecialMax()));
         status = "";
         if(party.get(1).getPoisonStatus() == true){
           status +="PSN ";
@@ -309,8 +320,10 @@ public class Game{
         status = "";
 
         TextBox(startRow,55,20,78, party.get(2).toString() + " - " + party.get(2).getType());
-        TextBox(startRow+1,55,20,78, "HP: " + colorByPercent(party.get(2).getHP(), party.get(2).getmaxHP()));
-        TextBox(startRow+2,55,20,78, "PP: " + colorByPercent(party.get(2).getSpecial(), party.get(2).getSpecialMax()));
+        TextBox(startRow+1,55,20,78, "HP: ");
+        TextBox(startRow+1,59,20,78,colorByPercent(party.get(2).getHP(), party.get(2).getmaxHP()));
+        TextBox(startRow+2,55,20,78, "PP: ");
+        TextBox(startRow+2,59,20,78, colorByPercent(party.get(2).getSpecial(), party.get(2).getSpecialMax()));
         status = "";
         if(party.get(2).getPoisonStatus() == true){
           status += "PSN ";
@@ -330,16 +343,16 @@ public class Game{
 
   //Use this to create a colorized number string based on the % compared to the max value.
   public static String colorByPercent(int hp, int maxHP){
-    String output = String.format("%2s", hp+"")+"/"+String.format("%2s", maxHP+"");
+    String output = hp+"/"+maxHP+"";
     //COLORIZE THE OUTPUT IF HIGH/LOW:
     // under 25% : red
     if((double)(hp/maxHP) < 0.25) {
-    	colorize(output, RED);
+    	return colorize(output, RED);
     }
 
     // under 75% : yellow
     if((double)(hp/maxHP) < 0.75) {
-    	colorize(output, YELLOW);
+    	return colorize(output, YELLOW);
     }
     // otherwise : white
     return output;

@@ -685,6 +685,29 @@ public class Game{
 					else{
 						partyTurn = true;
 						whichPlayer = 0;
+						
+						int start = 9;
+						for(int i = 0; i < enemies.size(); i++) {
+							 if (input.equals("")){
+							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyBurn());
+							start+=2;
+							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyPoison());
+							start+=2;
+							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applySeed());
+							start = 9;
+							 }
+						}
+						
+						for(int i = 0; i < enemies.size(); i++) {
+							 if (input.equals("")){
+							TextBox(9, 2, 37, 20, party.get(i).applyBurn());
+							start+=2;
+							TextBox(9, 2, 37, 20, party.get(i).applyPoison());
+							start+=2;
+							TextBox(9, 2, 37, 20, party.get(i).applySeed());
+							start = 9;
+							 }
+						}
 
 	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/quit";
 						TextBox(27, 2, 80, 1, prompt);

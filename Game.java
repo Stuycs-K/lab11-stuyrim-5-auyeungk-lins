@@ -170,13 +170,14 @@ public class Game{
 			}
 	  }
 		*/
+	  if(text != null) {
 		int textIndex =0;
 		int textLength = text.length();
 		 for (int i = row; i < height+row && textIndex < textLength; i++){
 			for (int j = col; j < width+col; j ++){
 		        if(textIndex < textLength){
-		        	if(textIndex == textLength-2) {
-			          if(j == width+col - 2 && text.charAt(textIndex) != ' ' && text.charAt(textIndex+1) != ' '){
+		        	if(textIndex > textLength-3) {
+			          if(j == width+col - 2 && text.charAt(textIndex) != ' '){
 			              drawText(Character.toString(text.charAt(textIndex)), i, j+1);
 			              drawText(Character.toString('-'), i, j+2);
 			              j++;
@@ -200,6 +201,7 @@ public class Game{
 	        	}
 			}
 		}
+	  }
     /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
   }
 
@@ -689,23 +691,35 @@ public class Game{
 						int start = 9;
 						for(int i = 0; i < enemies.size(); i++) {
 							 if (input.equals("")){
-							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyBurn());
-							start+=2;
-							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyPoison());
-							start+=2;
-							TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applySeed());
-							start = 9;
+								 if(enemies.get(i).getBurnStatus()) {
+									TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyBurn());
+									start+=2;
+								 }
+								 if(enemies.get(i).getPoisonStatus()) {
+									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyPoison());
+									 start+=2;
+								 }
+								 if(enemies.get(i).setSeededStatus()) {
+									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applySeed());
+									 start = 9;
+								 }
 							 }
 						}
 						
 						for(int i = 0; i < enemies.size(); i++) {
 							 if (input.equals("")){
-							TextBox(9, 2, 37, 20, party.get(i).applyBurn());
-							start+=2;
-							TextBox(9, 2, 37, 20, party.get(i).applyPoison());
-							start+=2;
-							TextBox(9, 2, 37, 20, party.get(i).applySeed());
-							start = 9;
+								 if(party.get(i).getBurnStatus()) {
+									 TextBox(9, 2, 37, 20, party.get(i).applyBurn());
+									 start+=2;
+								 }
+								 if(party.get(i).getBurnStatus()) {
+									 TextBox(9, 2, 37, 20, party.get(i).applyPoison());
+									 start+=2;
+								 }
+								 if(party.get(i).getBurnStatus()) {
+									 TextBox(9, 2, 37, 20, party.get(i).applySeed());
+									 start = 9;
+								 }
 							 }
 						}
 

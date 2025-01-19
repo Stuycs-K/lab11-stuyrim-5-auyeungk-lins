@@ -169,6 +169,10 @@ public abstract class Adventurer{
   public void setSeededStatus(boolean b){
 	    this.seededStatus = b;
   }
+  
+  public boolean setSeededStatus(){
+	   return seededStatus;
+}
 
   public void setProtectStatus(boolean b){
     this.protectStatus = b;

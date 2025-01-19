@@ -486,7 +486,7 @@ public class Game{
 				String partyType = party.get(whichPlayer).getType();
 
         //Process user input for the last Adventurer:
-        if(input.startsWith("attack ") || input.startsWith("a ")){
+        if(party.get(whichPlayer).getHP() > 0 && input.startsWith("attack ") || input.startsWith("a ")){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (input.endsWith("1")){
             erase(9,2, 40);
@@ -508,7 +508,7 @@ public class Game{
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("special ") || input.startsWith("sp" )){
+        else if(party.get(whichPlayer).getHP() > 0 &&  input.startsWith("special ") || input.startsWith("sp" )){
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
           if (partyType.equals("Fire") || partyType.equals("Grass")){
             if (input.endsWith("1")){
@@ -552,7 +552,7 @@ public class Game{
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.startsWith("support1 ") || input.startsWith("su1 ")){
+        else if(party.get(whichPlayer).getHP() > 0 && input.startsWith("support1 ") || input.startsWith("su1 ")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -598,7 +598,7 @@ public class Game{
           }
           /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
         }
-        else if(input.equals("support2") || input.startsWith("su2")){
+        else if(party.get(whichPlayer).getHP() > 0 &&  input.equals("support2") || input.startsWith("su2")){
           //"support 0" or "su 0" or "su 2" etc.
           //assume the value that follows su  is an integer.
           /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
@@ -657,7 +657,7 @@ public class Game{
 						erase(11, 41, 40);
             TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).attack(party.get(rollPerson)));
           }
-          if (rollAttack == 1){
+          if (enemies.get(whichOpponent).getHP() > 0 &&  rollAttack == 1){
 	          erase(9, 41, 40);
 	          erase(10, 41, 40);
 						erase(11, 41, 40);
@@ -671,7 +671,7 @@ public class Game{
               TextBox(9, 41, 37, 20, "Enemy " +enemies.get(whichOpponent).specialAttack(enemies.get(rollPerson)));
             }
           }
-          if (rollAttack == 2){
+          if (enemies.get(whichOpponent).getHP() > 0 && rollAttack == 2){
             if (enemyType.equals("Fire") || enemyType.equals("Grass")){
 		          erase(9, 41, 40);
 		          erase(10, 41, 40);
@@ -685,7 +685,7 @@ public class Game{
               TextBox(9, 41, 37, 20, "Enemy " + enemies.get(whichOpponent).support(enemies.get(rollPerson)));
             }
           }
-          if (rollAttack == 3){
+          if (enemies.get(whichOpponent).getHP() > 0 && rollAttack == 3){
 	          erase(9, 41, 40);
 	          erase(10, 41, 40);
 						erase(11, 41, 40);
@@ -706,45 +706,97 @@ public class Game{
 							 if (input.equals("")){
 								 if(enemies.get(i).getBurnStatus()) {
 			 	          erase(start, 41, 40);
-			 	          erase(start, 41, 40);
-			 						erase(start, 41, 40);
+			 	          erase(start+1, 41, 40);
+			 						
 									TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyBurn());
 									start+=2;
 								 }
+							 }
+							 if (input.equals("")){
 								 if(enemies.get(i).getPoisonStatus()) {
  			 	          erase(start, 41, 40);
- 			 	          erase(start, 41, 40);
- 			 						erase(start, 41, 40);
+ 			 	          erase(start+1, 41, 40);
+ 			 						
 									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applyPoison());
 									 start+=2;
 								 }
+							 }
+							 if (input.equals("")){
 								 if(enemies.get(i).setSeededStatus()) {
  			 	          erase(start, 41, 40);
- 			 	          erase(start, 41, 40);
- 			 						erase(start, 41, 40);
+ 			 	          erase(start+1, 41, 40);
+ 			 						
 									 TextBox(start, 41, 37, 20, "Enemy " + enemies.get(i).applySeed());
 									 start = 9;
 								 }
 							 }
 						}
 						
-						for(int i = 0; i < enemies.size(); i++) {
+						for(int i = 0; i < party.size(); i++) {
 							 if (input.equals("")){
 								 if(party.get(i).getBurnStatus()) {
+									 erase(start, 2, 40);
+						 	          erase(start+1, 2, 40);
 									 TextBox(9, 2, 37, 20, party.get(i).applyBurn());
 									 start+=2;
 								 }
+							 }
+							 if (input.equals("")){ 
 								 if(party.get(i).getBurnStatus()) {
+									 erase(start, 2, 40);
+						 	          erase(start+1, 2, 40);
 									 TextBox(9, 2, 37, 20, party.get(i).applyPoison());
 									 start+=2;
 								 }
+							 }
+							 if (input.equals("")){
 								 if(party.get(i).getBurnStatus()) {
+									 erase(start, 41, 40);
+						 	          erase(start+1, 41, 40);
 									 TextBox(9, 2, 37, 20, party.get(i).applySeed());
 									 start = 9;
 								 }
+									 
+								 
 							 }
 						}
-
+						
+						int totalhp = 0;
+						for(int i = 0;  i < enemies.size(); i++) {
+							totalhp+=enemies.get(i).getHP();
+						}
+						if(totalhp == 0) {
+							erase(9, 41, 40);
+					        erase(10, 41, 40);
+							erase(9,2, 40);
+				            erase(10,2,40);
+				            TextBox(27, 2, 80, 1, "Party has won!");
+				            if (input.equals("")){
+				            	quit();
+				            }else {
+				            	quit();
+				            }
+						}
+						totalhp = 0;
+						for(int i = 0;  i < party.size(); i++) {
+							totalhp+=party.get(i).getHP();
+						}
+						if(totalhp == 0) {
+							erase(9, 41, 40);
+					        erase(10, 41, 40);
+							erase(9,2, 40);
+				            erase(10,2,40);
+				            TextBox(27, 2, 80, 1, "Enemies have won!");
+				            if (input.equals("")){
+				            	quit();
+				            }else {
+				            	quit();
+				            }
+						}
+						totalhp = 0;
+						
+						
+						
 	          String prompt = "Enter command for "+party.get(whichPlayer)+": attack/special/support1/support2/quit";
 						TextBox(27, 2, 80, 1, prompt);
 					}
